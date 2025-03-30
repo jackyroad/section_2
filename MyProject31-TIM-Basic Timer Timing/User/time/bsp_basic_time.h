@@ -7,7 +7,8 @@
 #define BASIC_TIM_CLK               RCC_APB1Periph_TIM6
 
 #define BASIC_TIM_IRQn              TIM6_DAC_IRQn
-#define BASIC_TIM_IRQHandler        TIM6_DAC_IRQHandler //自己编写的中断函数       
+#define BASIC_TIM_IRQHandler        TIM6_DAC_IRQHandler //自己编写的中断函数
 
+void TIMx_Configuration(void);
 
 #endif /* __BSP_BASIC_TIME_H */

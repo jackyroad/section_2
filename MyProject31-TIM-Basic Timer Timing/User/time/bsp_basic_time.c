@@ -13,7 +13,7 @@
  * TIM_RepetitionCounter     TIMx,x[1,8]才有(高级定时器)
  * 
  */
-static void TIME_Mode_Config(void)
+static void TIMx_Mode_Config(void)
 {
     TIM_TimeBaseInitTypeDef TIM_TimeBaseStructure;
 
@@ -43,3 +43,35 @@ static void TIME_Mode_Config(void)
     TIM_Cmd(BASIC_TIM,ENABLE);
 }
 
+/**
+ * @brief 基本定时器中断配置
+ */
+static void TIMx_NVIC_Configuration(void)
+{
+    NVIC_InitTypeDef NVIC_InitStructure;
+
+     /* 设置优先级分组0 */
+    NVIC_PriorityGroupConfig(NVIC_PriorityGroup_0);
+
+    /* 设置中断来源 */
+    NVIC_InitStructure.NVIC_IRQChannel = BASIC_TIM_IRQn;
+
+    /* 设置抢占优先级 */
+    NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0;
+
+    /* 设置子优先级 */
+    NVIC_InitStructure.NVIC_IRQChannelSubPriority = 3;
+
+    NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
+    NVIC_Init(&NVIC_InitStructure);
+}
+
+/**
+ * @brief 基本定时器初始化，定时结束产生0.5中断
+ */
+void TIMx_Configuration(void)
+{
+    TIMx_NVIC_Configuration();
+
+    TIMx_Mode_Config();
+}

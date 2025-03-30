@@ -29,6 +29,8 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f4xx_it.h"
+#include "./led/bsp_led.h"
+#include "./time/bsp_basic_time.h"
 
 /** @addtogroup STM32F429I_DISCOVERY_Examples
   * @{
@@ -145,12 +147,12 @@ void SysTick_Handler(void)
 /*  file (startup_stm32f429_439xx.s).                         */
 /******************************************************************************/
 
-/**
-  * @}
-  */ 
-
-/**
-  * @}
-  */ 
-
-/************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
+void BASIC_TIM_IRQHandler(void)
+{
+  if (TIM_GetITStatus(BASIC_TIM, TIM_IT_Update))
+  {
+    LED1_TOGGLE;
+    TIM_ClearITPendingBit(BASIC_TIM, TIM_IT_Update);
+  }
+}
+    /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

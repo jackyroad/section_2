@@ -1,5 +1,7 @@
 {
     "files.associations": {
-        "bsp_basic_time.h": "c"
+        "bsp_basic_time.h": "c",
+        "bsp_led.h": "c",
+        "stm32f4xx_it.h": "c"
     }
 }

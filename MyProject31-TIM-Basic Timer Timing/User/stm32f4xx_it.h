@@ -51,6 +51,9 @@ void DebugMon_Handler(void);
 void PendSV_Handler(void);
 void SysTick_Handler(void);
 
+/* 自己写的定时器中断 */
+void BASIC_TIM_IRQHandler(void);
+
 #ifdef __cplusplus
 }
 #endif
