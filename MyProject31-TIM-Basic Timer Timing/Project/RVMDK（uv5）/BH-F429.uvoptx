@@ -22,7 +22,7 @@
   </DaveTm>
 
   <Target>
-    <TargetName>基本定时器</TargetName>
+    <TargetName>BASIC_TIME</TargetName>
     <ToolsetNumber>0x4</ToolsetNumber>
     <ToolsetName>ARM-ADS</ToolsetName>
     <TargetOption>
@@ -827,7 +827,7 @@
       <GroupNumber>4</GroupNumber>
       <FileNumber>48</FileNumber>
       <FileType>1</FileType>
-      <tvExp>0</tvExp>
+      <tvExp>1</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\..\User\time\bsp_basic_time.c</PathWithFileName>
