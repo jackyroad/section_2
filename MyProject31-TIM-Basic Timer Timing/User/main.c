@@ -18,6 +18,7 @@
 #include "stm32f4xx.h"
 #include "./led/bsp_led.h"
 #include "./time/bsp_basic_time.h"
+#include "./beep/bsp_beep.h"
 
 /**
   * @brief  Ö÷º¯Êý
@@ -27,6 +28,8 @@
 int main(void)
 {
   LED_GPIO_Config();
+
+  BEEP_GPIO_Config();
 
   TIMx_Configuration();
 

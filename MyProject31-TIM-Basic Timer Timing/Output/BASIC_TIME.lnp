@@ -44,6 +44,7 @@
 "..\..\output\stm32f4xx_it.o"
 "..\..\output\bsp_led.o"
 "..\..\output\bsp_basic_time.o"
+"..\..\output\bsp_beep.o"
 --library_type=microlib --strict --scatter "..\..\Output\BASIC_TIME.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

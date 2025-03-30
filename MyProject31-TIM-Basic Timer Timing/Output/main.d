@@ -35,4 +35,5 @@
   ..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_fmc.h \
   ..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_ltdc.h \
   ..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_sai.h \
-  ..\..\User\.\led\bsp_led.h ..\..\User\.\time\bsp_basic_time.h
+  ..\..\User\.\led\bsp_led.h ..\..\User\.\time\bsp_basic_time.h \
+  ..\..\User\.\beep\bsp_beep.h
