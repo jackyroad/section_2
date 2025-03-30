@@ -1,19 +1,11 @@
 /**
-  ******************************************************************************
-  * @file    main.c
-  * @author  fire
-  * @version V1.0
-  * @date    2015-xx-xx
-  * @brief   用1.5.1版本库建的工程模板
-  ******************************************************************************
-  * @attention
-  *
-  * 实验平台:野火  STM32 F429 开发板 
-  * 论坛    :http://www.firebbs.cn
-  * 淘宝    :https://fire-stm32.taobao.com
-  *
-  ******************************************************************************
-  */
+ * @file   main.c
+ * @brief 
+ * @author leshen (13762713527@qq.com)
+ * @version{gitBranch} (commit:修改了注释)
+ * @date 2025-03-30
+ * @copyright Copyright (c) 2025
+ */
   
 #include "stm32f4xx.h"
 #include "./led/bsp_led.h"
