@@ -7,7 +7,7 @@
 
   <Targets>
     <Target>
-      <TargetName>工程模板</TargetName>
+      <TargetName>基本定时器</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
       <pCCUsed>6220000::V6.22::ARMCLANG</pCCUsed>
@@ -49,7 +49,7 @@
             <InvalidFlash>1</InvalidFlash>
           </TargetStatus>
           <OutputDirectory>..\..\Output\</OutputDirectory>
-          <OutputName>多彩流水灯</OutputName>
+          <OutputName>基本定时器</OutputName>
           <CreateExecutable>1</CreateExecutable>
           <CreateLib>0</CreateLib>
           <CreateHexFile>1</CreateHexFile>
@@ -340,7 +340,7 @@
               <MiscControls></MiscControls>
               <Define>USE_STDPERIPH_DRIVER,STM32F429_439xx,</Define>
               <Undefine></Undefine>
-              <IncludePath>..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include;..\..\Libraries\CMSIS\Include;..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc;..\..\User</IncludePath>
+              <IncludePath>..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include;..\..\Libraries\CMSIS\Include;..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc;..\..\User;..\..\User\led;..\..\User\time</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -679,6 +679,16 @@
               <FileName>stm32f4xx_it.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\..\User\stm32f4xx_it.h</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_led.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\User\led\bsp_led.c</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_basic_time.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\User\time\bsp_basic_time.c</FilePath>
             </File>
           </Files>
         </Group>
