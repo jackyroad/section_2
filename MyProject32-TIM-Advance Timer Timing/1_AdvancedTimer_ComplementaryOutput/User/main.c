@@ -1,8 +1,8 @@
 /**
  * @file   main.c
- * @brief 
+ * @brief
  * @author leshen (13762713527@qq.com)
- * @version{master} (commit1:{初次提交})
+ * @version{master} (commit2:{添加了led和beep功能})
  * @date 2025-03-31
  * @copyright Copyright (c) 2025
  */
@@ -14,6 +14,8 @@
 #include "./led/bsp_led.h"
 
 extern __IO uint16_t ChannelPulse;
+
+void delay_ms(uint32_t nCount);
 
 /**
  * @brief  主函数
@@ -31,6 +33,7 @@ int main(void)
 
   while (1)
   {
+    /* 占空比公式：ChannelPulse/1024 100% */
     if (Key_Scan(KEY1_GPIO_PORT, KEY1_PIN) == KEY_ON)
     {
       if (ChannelPulse < 960)
@@ -41,7 +44,12 @@ int main(void)
       {
         ChannelPulse = 1024;
       }
+
       TIM_SetCompare1(ADVANCE_TIM, ChannelPulse);
+
+      BEEP_ON;
+      delay_ms(100);
+      BEEP_OFF;
     }
 
     if (Key_Scan(KEY1_GPIO_PORT, KEY2_PIN) == KEY_ON)
@@ -54,8 +62,50 @@ int main(void)
       {
         ChannelPulse = 0;
       }
+
       TIM_SetCompare1(ADVANCE_TIM, ChannelPulse);
+
+      BEEP_OFF;
+      delay_ms(50);
+      BEEP_ON;
+      delay_ms(50);
+      BEEP_OFF;
     }
+
+    if (GPIO_ReadOutputDataBit(ADVANCE_OCPWM_GPIO_PORT, ADVANCE_OCPWM_PIN))
+    {
+      LED1_ON;
+    }
+    else
+    {
+      LED1_OFF;
+    }
+
+    if (GPIO_ReadOutputDataBit(ADVANCE_OCNPWM_GPIO_PORT, ADVANCE_OCNPWM_PIN))
+    {
+      LED2_ON;
+    }
+    else
+    {
+      LED2_OFF;
+    }
+  }
+}
+
+void delay_ms(uint32_t nCount)
+{
+  for (; nCount != 0; nCount--)
+  {
+    __NOP();
+    __NOP();
+    __NOP();
+    __NOP();
+    __NOP();
+    __NOP();
+    __NOP();
+    __NOP();
+    __NOP();
+    __NOP();
   }
 }
 

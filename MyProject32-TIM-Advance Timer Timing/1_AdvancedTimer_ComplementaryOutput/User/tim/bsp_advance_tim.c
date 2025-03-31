@@ -8,7 +8,7 @@
 
 #include "./tim/bsp_advance_tim.h"
 
-__IO uint16_t ChannelPulse = 127;
+__IO uint16_t ChannelPulse = 512;
 /**
  * @brief  配置TIM复用输出PWM时用到的I/O
  * @param  无
@@ -89,7 +89,7 @@ static void TIM_Mode_Config(void)
 
   TIM_OCInitStructure.TIM_OutputState = TIM_OutputState_Enable;
   TIM_OCInitStructure.TIM_OutputNState = TIM_OutputNState_Enable;
-  
+
   /* PWM输出模式：决定输出脉冲的占空比；输入捕获模式：存储捕获到的脉冲边沿时刻（计数器值）*/
   TIM_OCInitStructure.TIM_Pulse = ChannelPulse;
 
