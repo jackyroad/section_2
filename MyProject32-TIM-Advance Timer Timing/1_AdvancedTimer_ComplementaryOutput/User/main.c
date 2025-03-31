@@ -1,38 +1,62 @@
 /**
-  ******************************************************************************
-  * @file    main.c
-  * @author  fire
-  * @version V1.0
-  * @date    2015-xx-xx
-  * @brief   用1.5.1版本库建的工程模板
-  ******************************************************************************
-  * @attention
-  *
-  * 实验平台:野火  STM32 F429 开发板 
-  * 论坛    :http://www.firebbs.cn
-  * 淘宝    :https://fire-stm32.taobao.com
-  *
-  ******************************************************************************
-  */
-  
+ * @file   main.c
+ * @brief 
+ * @author leshen (13762713527@qq.com)
+ * @version{master} (commit1:{初次提交})
+ * @date 2025-03-31
+ * @copyright Copyright (c) 2025
+ */
+
 #include "stm32f4xx.h"
+#include "./tim/bsp_advance_tim.h"
+#include "./key/bsp_key.h"
+#include "./beep/bsp_beep.h"
+#include "./led/bsp_led.h"
+
+extern __IO uint16_t ChannelPulse;
 
 /**
-  * @brief  主函数
-  * @param  无
-  * @retval 无
-  */
+ * @brief  主函数
+ * @param  无
+ * @retval 无
+ */
+
 int main(void)
 {
-		/* 程序来到main函数之前，启动文件：statup_stm32f429xx.s已经调用
-		* SystemInit()函数把系统时钟初始化成180MHZ
-		* SystemInit()在system_stm32f4xx.c中定义
-		* 如果用户想修改系统时钟，可自行编写程序修改
-		*/
-		  /* add your code here ^_^. */
-  	  while(1);
+  /* 外设初始化 */
+  Key_GPIO_Config();
+  BEEP_GPIO_Config();
+  LED_GPIO_Config();
+  TIMx_Configuration();
 
+  while (1)
+  {
+    if (Key_Scan(KEY1_GPIO_PORT, KEY1_PIN) == KEY_ON)
+    {
+      if (ChannelPulse < 960)
+      {
+        ChannelPulse += 64;
+      }
+      else
+      {
+        ChannelPulse = 1024;
+      }
+      TIM_SetCompare1(ADVANCE_TIM, ChannelPulse);
+    }
+
+    if (Key_Scan(KEY1_GPIO_PORT, KEY2_PIN) == KEY_ON)
+    {
+      if (ChannelPulse >= 64)
+      {
+        ChannelPulse -= 64;
+      }
+      else
+      {
+        ChannelPulse = 0;
+      }
+      TIM_SetCompare1(ADVANCE_TIM, ChannelPulse);
+    }
+  }
 }
 
 /*********************************************END OF FILE**********************/
-
