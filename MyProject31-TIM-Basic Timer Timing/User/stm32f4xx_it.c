@@ -30,7 +30,7 @@
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f4xx_it.h"
 #include "./led/bsp_led.h"
-#include "./time/bsp_basic_time.h"
+#include "./tim/bsp_basic_time.h"
 #include "./beep/bsp_beep.h"
 
 /** @addtogroup STM32F429I_DISCOVERY_Examples

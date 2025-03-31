@@ -340,7 +340,7 @@
               <MiscControls></MiscControls>
               <Define>USE_STDPERIPH_DRIVER,STM32F429_439xx,</Define>
               <Undefine></Undefine>
-              <IncludePath>..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include;..\..\Libraries\CMSIS\Include;..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc;..\..\User;..\..\User\led;..\..\User\time;..\..\User\beep</IncludePath>
+              <IncludePath>..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include;..\..\Libraries\CMSIS\Include;..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc;..\..\User;..\..\User\led;..\..\User\beep;..\..\User\tim</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -686,14 +686,14 @@
               <FilePath>..\..\User\led\bsp_led.c</FilePath>
             </File>
             <File>
-              <FileName>bsp_basic_time.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\User\time\bsp_basic_time.c</FilePath>
-            </File>
-            <File>
               <FileName>bsp_beep.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\User\beep\bsp_beep.c</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_basic_time.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\User\tim\bsp_basic_time.c</FilePath>
             </File>
           </Files>
         </Group>

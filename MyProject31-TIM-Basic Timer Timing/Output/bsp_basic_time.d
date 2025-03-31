@@ -1,5 +1,5 @@
-../../output/bsp_basic_time.o: ..\..\User\time\bsp_basic_time.c \
-  ..\..\User\time\bsp_basic_time.h \
+../../output/bsp_basic_time.o: ..\..\User\tim\bsp_basic_time.c \
+  ..\..\User\tim\bsp_basic_time.h \
   ..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h \
   ..\..\Libraries\CMSIS\Include\core_cm4.h \
   ..\..\Libraries\CMSIS\Include\core_cmInstr.h \

@@ -22,31 +22,53 @@ Dialog DLL:      TCM.DLL V1.56.4.0
  
 <h2>Project:</h2>
 f:\Generated_Files\section_2\MyProject31-TIM-Basic Timer Timing\Project\RVMDK（uv5）\BH-F429.uvprojx
-Project File Date:  03/30/2025
+Project File Date:  03/31/2025
 
 <h2>Output:</h2>
 *** Using Compiler 'V6.22', folder: 'D:\software\Keil_v5\ARM\ARMCLANG\Bin'
 Build target 'BASIC_TIME'
+compiling bsp_basic_time.c...
 ../../User/stm32f4xx_it.c(34): warning: In file included from...
-../../User\./beep/bsp_beep.h(14): warning: 'ON' macro redefined [-Wmacro-redefined]
-   14 | #define ON  1
+../../User\./beep/bsp_beep.h(12): warning: 'ON' macro redefined [-Wmacro-redefined]
+   12 | #define ON 1
       |         ^
 ../../User\./led/bsp_led.h(34): note: previous definition is here
    34 | #define ON  0
       |         ^
 ../../User/stm32f4xx_it.c(34): warning: In file included from...
-../../User\./beep/bsp_beep.h(15): warning: 'OFF' macro redefined [-Wmacro-redefined]
-   15 | #define OFF 0
+../../User\./beep/bsp_beep.h(13): warning: 'OFF' macro redefined [-Wmacro-redefined]
+   13 | #define OFF 0
       |         ^
 ../../User\./led/bsp_led.h(35): note: previous definition is here
    35 | #define OFF 1
       |         ^
-2 warnings generated.
+../../User/stm32f4xx_it.c(34): warning: In file included from...
+../../User\./beep/bsp_beep.h(23): warning: 'digitalHi' macro redefined [-Wmacro-redefined]
+   23 | #define digitalHi(p, i) \
+      |         ^
+../../User\./led/bsp_led.h(60): note: previous definition is here
+   60 | #define digitalHi(p,i)                  {p->BSRRL=i;}                     //<C9><E8><D6><C3>为<B8>叩<E7>平                
+      |         ^
+../../User/stm32f4xx_it.c(34): warning: In file included from...
+../../User\./beep/bsp_beep.h(27): warning: 'digitalLo' macro redefined [-Wmacro-redefined]
+   27 | #define digitalLo(p, i) \
+      |         ^
+../../User\./led/bsp_led.h(61): note: previous definition is here
+   61 | #define digitalLo(p,i)                  {p->BSRRH=i;}                           //<CA><E4><B3><F6><B5>偷<E7>平
+      |         ^
+../../User/stm32f4xx_it.c(34): warning: In file included from...
+../../User\./beep/bsp_beep.h(31): warning: 'digitalToggle' macro redefined [-Wmacro-redefined]
+   31 | #define digitalToggle(p, i) \
+      |         ^
+../../User\./led/bsp_led.h(62): note: previous definition is here
+   62 | #define digitalToggle(p,i)              {p->ODR ^=i;}                   //<CA><E4><B3><F6><B7><B4>转状态
+      |         ^
+5 warnings generated.
 compiling stm32f4xx_it.c...
 linking...
 Program Size: Code=1356 RO-data=444 RW-data=0 ZI-data=1032  
 FromELF: creating hex file...
-"..\..\Output\BASIC_TIME.axf" - 0 Error(s), 2 Warning(s).
+"..\..\Output\BASIC_TIME.axf" - 0 Error(s), 5 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -58,7 +80,7 @@ Package Vendor: Keil
 <h2>Collection of Component include folders:</h2>
 
 <h2>Collection of Component Files used:</h2>
-Build Time Elapsed:  00:00:01
+Build Time Elapsed:  00:00:02
 </pre>
 </body>
 </html>

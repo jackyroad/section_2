@@ -830,8 +830,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\User\time\bsp_basic_time.c</PathWithFileName>
-      <FilenameWithoutPath>bsp_basic_time.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\User\beep\bsp_beep.c</PathWithFileName>
+      <FilenameWithoutPath>bsp_beep.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -842,8 +842,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\User\beep\bsp_beep.c</PathWithFileName>
-      <FilenameWithoutPath>bsp_beep.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\User\tim\bsp_basic_time.c</PathWithFileName>
+      <FilenameWithoutPath>bsp_basic_time.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
