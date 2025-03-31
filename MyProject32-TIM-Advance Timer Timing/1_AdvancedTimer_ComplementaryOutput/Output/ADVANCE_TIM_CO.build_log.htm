@@ -1,0 +1,85 @@
+<html>
+<body>
+<pre>
+<h1>礦ision Build Log</h1>
+<h2>Tool Versions:</h2>
+IDE-Version: μVision V5.41.0.0
+Copyright (C) 2024 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information:  ,  , LIC=----
+ 
+Tool Versions:
+Toolchain:       MDK-Lite  Version: 5.41.0.0
+Toolchain Path:  D:\software\Keil_v5\ARM\ARMCLANG\Bin
+C Compiler:      ArmClang.exe V6.22
+Assembler:       Armasm.exe V6.22
+Linker/Locator:  ArmLink.exe V6.22
+Library Manager: ArmAr.exe V6.22
+Hex Converter:   FromElf.exe V6.22
+CPU DLL:         SARMCM3.DLL V5.41.0.0
+Dialog DLL:      DCM.DLL V1.17.5.0
+Target DLL:      CMSIS_AGDI.dll V1.33.21.0
+Dialog DLL:      TCM.DLL V1.56.4.0
+ 
+<h2>Project:</h2>
+f:\Generated_Files\section_2\MyProject32-TIM-Advance Timer Timing\1_AdvancedTimer_ComplementaryOutput\Project\RVMDK（uv5）\BH-F429.uvprojx
+Project File Date:  03/31/2025
+
+<h2>Output:</h2>
+*** Using Compiler 'V6.22', folder: 'D:\software\Keil_v5\ARM\ARMCLANG\Bin'
+Build target 'ADVANCE_TIM_CO'
+../../User/main.c(14): warning: In file included from...
+../../User\./led/bsp_led.h(34): warning: 'ON' macro redefined [-Wmacro-redefined]
+   34 | #define ON  0
+      |         ^
+../../User\./beep/bsp_beep.h(12): note: previous definition is here
+   12 | #define ON 1
+      |         ^
+../../User/main.c(14): warning: In file included from...
+../../User\./led/bsp_led.h(35): warning: 'OFF' macro redefined [-Wmacro-redefined]
+   35 | #define OFF 1
+      |         ^
+../../User\./beep/bsp_beep.h(13): note: previous definition is here
+   13 | #define OFF 0
+      |         ^
+../../User/main.c(14): warning: In file included from...
+../../User\./led/bsp_led.h(60): warning: 'digitalHi' macro redefined [-Wmacro-redefined]
+   60 | #define digitalHi(p,i)                  {p->BSRRL=i;}                     //<C9><E8><D6><C3>为<B8>叩<E7>平                
+      |         ^
+../../User\./beep/bsp_beep.h(23): note: previous definition is here
+   23 | #define digitalHi(p, i) \
+      |         ^
+../../User/main.c(14): warning: In file included from...
+../../User\./led/bsp_led.h(61): warning: 'digitalLo' macro redefined [-Wmacro-redefined]
+   61 | #define digitalLo(p,i)                  {p->BSRRH=i;}                           //<CA><E4><B3><F6><B5>偷<E7>平
+      |         ^
+../../User\./beep/bsp_beep.h(27): note: previous definition is here
+   27 | #define digitalLo(p, i) \
+      |         ^
+../../User/main.c(14): warning: In file included from...
+../../User\./led/bsp_led.h(62): warning: 'digitalToggle' macro redefined [-Wmacro-redefined]
+   62 | #define digitalToggle(p,i)              {p->ODR ^=i;}                   //<CA><E4><B3><F6><B7><B4>转状态
+      |         ^
+../../User\./beep/bsp_beep.h(31): note: previous definition is here
+   31 | #define digitalToggle(p, i) \
+      |         ^
+5 warnings generated.
+compiling main.c...
+linking...
+Program Size: Code=1696 RO-data=460 RW-data=4 ZI-data=1028  
+FromELF: creating hex file...
+"..\..\Output\ADVANCE_TIM_CO.axf" - 0 Error(s), 5 Warning(s).
+
+<h2>Software Packages used:</h2>
+
+Package Vendor: Keil
+                https://www.keil.com/pack/Keil.STM32F4xx_DFP.3.0.0.pack
+                Keil::STM32F4xx_DFP@3.0.0
+                STMicroelectronics STM32F4 Series Device Support
+
+<h2>Collection of Component include folders:</h2>
+
+<h2>Collection of Component Files used:</h2>
+Build Time Elapsed:  00:00:01
+</pre>
+</body>
+</html>

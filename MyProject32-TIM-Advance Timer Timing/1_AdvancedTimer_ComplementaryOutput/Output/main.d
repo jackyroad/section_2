@@ -34,4 +34,6 @@
   ..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dma2d.h \
   ..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_fmc.h \
   ..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_ltdc.h \
-  ..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_sai.h
+  ..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_sai.h \
+  ..\..\User\.\tim\bsp_advance_tim.h ..\..\User\.\key\bsp_key.h \
+  ..\..\User\.\beep\bsp_beep.h ..\..\User\.\led\bsp_led.h

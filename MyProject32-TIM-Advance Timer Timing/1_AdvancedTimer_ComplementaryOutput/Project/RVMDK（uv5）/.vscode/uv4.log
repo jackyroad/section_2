@@ -1,4 +1,39 @@
 *** Using Compiler 'V6.22', folder: 'D:\software\Keil_v5\ARM\ARMCLANG\Bin'
-Build target 'ADVANCE_TIM'
-"..\..\Output\ADVANCE_TIM.axf" - 0 Error(s), 0 Warning(s).
+Build target 'ADVANCE_TIM_CO'
+../../User/main.c(14): warning: In file included from...../../User\./led/bsp_led.h(34): warning: 'ON' macro redefined [-Wmacro-redefined]
+   34 | #define ON  0
+      |         ^
+../../User\./beep/bsp_beep.h(12): note: previous definition is here
+   12 | #define ON 1
+      |         ^
+../../User/main.c(14): warning: In file included from...../../User\./led/bsp_led.h(35): warning: 'OFF' macro redefined [-Wmacro-redefined]
+   35 | #define OFF 1
+      |         ^
+../../User\./beep/bsp_beep.h(13): note: previous definition is here
+   13 | #define OFF 0
+      |         ^
+../../User/main.c(14): warning: In file included from...../../User\./led/bsp_led.h(60): warning: 'digitalHi' macro redefined [-Wmacro-redefined]
+   60 | #define digitalHi(p,i)                  {p->BSRRL=i;}                     //<C9><E8><D6><C3>Ϊ<B8>ߵ<E7>ƽ                
+      |         ^
+../../User\./beep/bsp_beep.h(23): note: previous definition is here
+   23 | #define digitalHi(p, i) \
+      |         ^
+../../User/main.c(14): warning: In file included from...../../User\./led/bsp_led.h(61): warning: 'digitalLo' macro redefined [-Wmacro-redefined]
+   61 | #define digitalLo(p,i)                  {p->BSRRH=i;}                           //<CA><E4><B3><F6><B5>͵<E7>ƽ
+      |         ^
+../../User\./beep/bsp_beep.h(27): note: previous definition is here
+   27 | #define digitalLo(p, i) \
+      |         ^
+../../User/main.c(14): warning: In file included from...../../User\./led/bsp_led.h(62): warning: 'digitalToggle' macro redefined [-Wmacro-redefined]
+   62 | #define digitalToggle(p,i)              {p->ODR ^=i;}                   //<CA><E4><B3><F6><B7><B4>ת״̬
+      |         ^
+../../User\./beep/bsp_beep.h(31): note: previous definition is here
+   31 | #define digitalToggle(p, i) \
+      |         ^
+5 warnings generated.
+compiling main.c...
+linking...
+Program Size: Code=1696 RO-data=460 RW-data=4 ZI-data=1028  
+FromELF: creating hex file...
+"..\..\Output\ADVANCE_TIM_CO.axf" - 0 Error(s), 5 Warning(s).
 Build Time Elapsed:  00:00:01
