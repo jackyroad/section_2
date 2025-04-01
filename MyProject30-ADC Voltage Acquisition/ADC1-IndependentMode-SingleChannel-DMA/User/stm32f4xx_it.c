@@ -29,6 +29,8 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f4xx_it.h"
+extern void TimingDelay_Decrement(void);
+#include "./led/bsp_led.h"
 
 /** @addtogroup STM32F429I_DISCOVERY_Examples
   * @{
@@ -136,7 +138,10 @@ void PendSV_Handler(void)
   * @retval None
   */
 void SysTick_Handler(void)
-{}
+{
+  TimingDelay_Decrement();
+  LED1_TOGGLE;
+}
 
 /******************************************************************************/
 /*                 STM32F4xx Peripherals Interrupt Handlers                   */

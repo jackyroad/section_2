@@ -52,7 +52,7 @@ int main(void)
     /* 分辨率为12位，所以每一份大小为3.3/(2^12)=0.80566mV，这是很微小的*/
     ADC_Vol = (float)ADC_ConvertedValue / 4096 * (float)3.3; // 读取转换的AD值
 
-    Delay_s(1);
+    Delay(0xffffff);
   }
 }
 
