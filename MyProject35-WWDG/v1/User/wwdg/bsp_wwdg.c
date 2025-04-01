@@ -9,7 +9,7 @@
 #include "./wwdg/bsp_wwdg.h"   
 
 //用于记录看门狗 递减计数器的值，方便喂狗函数直接使用
-static uint8_t wwdg_cnt ;
+static uint8_t wwdg_cnt;
 
 // WWDG 中断优先级初始化
 static void WWDG_NVIC_Config(void)
@@ -73,7 +73,7 @@ void WWDG_Config(uint8_t tr, uint8_t wr, uint32_t prv)
 void WWDG_Feed(void)
 {
 	// 喂狗，刷新递减计数器的值，设置成最大WDG_CNT=0X7F
-	WWDG_SetCounter( wwdg_cnt );
+	WWDG_SetCounter(wwdg_cnt);
 }
 
 

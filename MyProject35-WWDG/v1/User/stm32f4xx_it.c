@@ -31,13 +31,16 @@
 #include "stm32f4xx_it.h"
 #include "./led/bsp_led.h"
 #include "./wwdg/bsp_wwdg.h"
+
+static void Delay(__IO uint32_t nCount);
+
 /** @addtogroup STM32F429I_DISCOVERY_Examples
-  * @{
-  */
+ * @{
+ */
 
 /** @addtogroup FMC_SDRAM
-  * @{
-  */ 
+ * @{
+ */
 
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
@@ -51,10 +54,10 @@
 /******************************************************************************/
 
 /**
-  * @brief  This function handles NMI exception.
-  * @param  None
-  * @retval None
-  */
+ * @brief  This function handles NMI exception.
+ * @param  None
+ * @retval None
+ */
 void NMI_Handler(void)
 {
 }
@@ -148,8 +151,19 @@ void SysTick_Handler(void)
 
 void WWDG_IRQHandler(void)
 {
-  /* 清除中断标志位 */
-  WWDG_ClearFlag();
-  LED3_ON;
+  if (WWDG_GetFlagStatus() == SET)
+  {                        // 检查标志
+    WWDG_ClearFlag();      // 清除标志
+    WWDG_SetCounter(0x7F); // 喂狗
+    LED1_ON;                // 调试指示
+    Delay(0xFFFFFFFF);
+    LED1_OFF;
+  }
+}
+
+static void Delay(__IO uint32_t nCount) // 简单的延时函数
+{
+  for (; nCount != 0; nCount--)
+    ;
 }
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

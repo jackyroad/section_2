@@ -896,7 +896,9 @@ Section Cross References
     stm32f4xx_wwdg.o(.ARM.exidx.text.WWDG_GetFlagStatus) refers to stm32f4xx_wwdg.o(.text.WWDG_GetFlagStatus) for [Anonymous Symbol]
     stm32f4xx_wwdg.o(.ARM.exidx.text.WWDG_ClearFlag) refers to stm32f4xx_wwdg.o(.text.WWDG_ClearFlag) for [Anonymous Symbol]
     main.o(.text.main) refers to bsp_led.o(.text.LED_GPIO_Config) for LED_GPIO_Config
+    main.o(.text.main) refers to stm32f4xx_gpio.o(.text.GPIO_ResetBits) for GPIO_ResetBits
     main.o(.text.main) refers to bsp_wwdg.o(.text.WWDG_Config) for WWDG_Config
+    main.o(.text.main) refers to stm32f4xx_gpio.o(.text.GPIO_SetBits) for GPIO_SetBits
     main.o(.text.main) refers to bsp_wwdg.o(.text.WWDG_Feed) for WWDG_Feed
     main.o(.ARM.exidx.text.main) refers to main.o(.text.main) for [Anonymous Symbol]
     stm32f4xx_it.o(.ARM.exidx.text.NMI_Handler) refers to stm32f4xx_it.o(.text.NMI_Handler) for [Anonymous Symbol]
@@ -908,7 +910,9 @@ Section Cross References
     stm32f4xx_it.o(.ARM.exidx.text.SVC_Handler) refers to stm32f4xx_it.o(.text.SVC_Handler) for [Anonymous Symbol]
     stm32f4xx_it.o(.ARM.exidx.text.PendSV_Handler) refers to stm32f4xx_it.o(.text.PendSV_Handler) for [Anonymous Symbol]
     stm32f4xx_it.o(.ARM.exidx.text.SysTick_Handler) refers to stm32f4xx_it.o(.text.SysTick_Handler) for [Anonymous Symbol]
+    stm32f4xx_it.o(.text.WWDG_IRQHandler) refers to stm32f4xx_wwdg.o(.text.WWDG_GetFlagStatus) for WWDG_GetFlagStatus
     stm32f4xx_it.o(.text.WWDG_IRQHandler) refers to stm32f4xx_wwdg.o(.text.WWDG_ClearFlag) for WWDG_ClearFlag
+    stm32f4xx_it.o(.text.WWDG_IRQHandler) refers to stm32f4xx_wwdg.o(.text.WWDG_SetCounter) for WWDG_SetCounter
     stm32f4xx_it.o(.ARM.exidx.text.WWDG_IRQHandler) refers to stm32f4xx_it.o(.text.WWDG_IRQHandler) for [Anonymous Symbol]
     bsp_key.o(.ARM.exidx.text.Key_Delay) refers to bsp_key.o(.text.Key_Delay) for [Anonymous Symbol]
     bsp_key.o(.text.Key_GPIO_Config) refers to stm32f4xx_rcc.o(.text.RCC_AHB1PeriphClockCmd) for RCC_AHB1PeriphClockCmd
@@ -1503,7 +1507,6 @@ Removing Unused input sections from the image.
     Removing stm32f4xx_gpio.o(.ARM.exidx.text.GPIO_ReadOutputDataBit), (8 bytes).
     Removing stm32f4xx_gpio.o(.text.GPIO_ReadOutputData), (6 bytes).
     Removing stm32f4xx_gpio.o(.ARM.exidx.text.GPIO_ReadOutputData), (8 bytes).
-    Removing stm32f4xx_gpio.o(.text.GPIO_SetBits), (4 bytes).
     Removing stm32f4xx_gpio.o(.ARM.exidx.text.GPIO_SetBits), (8 bytes).
     Removing stm32f4xx_gpio.o(.ARM.exidx.text.GPIO_ResetBits), (8 bytes).
     Removing stm32f4xx_gpio.o(.text.GPIO_WriteBit), (10 bytes).
@@ -2403,7 +2406,6 @@ Removing Unused input sections from the image.
     Removing stm32f4xx_wwdg.o(.ARM.exidx.text.WWDG_EnableIT), (8 bytes).
     Removing stm32f4xx_wwdg.o(.ARM.exidx.text.WWDG_SetCounter), (8 bytes).
     Removing stm32f4xx_wwdg.o(.ARM.exidx.text.WWDG_Enable), (8 bytes).
-    Removing stm32f4xx_wwdg.o(.text.WWDG_GetFlagStatus), (18 bytes).
     Removing stm32f4xx_wwdg.o(.ARM.exidx.text.WWDG_GetFlagStatus), (8 bytes).
     Removing stm32f4xx_wwdg.o(.ARM.exidx.text.WWDG_ClearFlag), (8 bytes).
     Removing main.o(.text), (0 bytes).
@@ -2436,7 +2438,7 @@ Removing Unused input sections from the image.
     Removing bsp_beep.o(.text.BEEP_GPIO_Config), (60 bytes).
     Removing bsp_beep.o(.ARM.exidx.text.BEEP_GPIO_Config), (8 bytes).
 
-1477 unused section(s) (total 37040 bytes) removed from the image.
+1475 unused section(s) (total 37018 bytes) removed from the image.
 
 ==============================================================================
 
@@ -2529,32 +2531,34 @@ Image Symbol Table
     [Anonymous Symbol]                       0x08000218   Section        0  stm32f4xx_it.o(.text.DebugMon_Handler)
     [Anonymous Symbol]                       0x0800021c   Section        0  stm32f4xx_gpio.o(.text.GPIO_Init)
     [Anonymous Symbol]                       0x080002a8   Section        0  stm32f4xx_gpio.o(.text.GPIO_ResetBits)
-    [Anonymous Symbol]                       0x080002ac   Section        0  stm32f4xx_it.o(.text.HardFault_Handler)
-    [Anonymous Symbol]                       0x080002b0   Section        0  bsp_led.o(.text.LED_GPIO_Config)
-    [Anonymous Symbol]                       0x0800032c   Section        0  stm32f4xx_it.o(.text.MemManage_Handler)
-    [Anonymous Symbol]                       0x08000330   Section        0  stm32f4xx_it.o(.text.NMI_Handler)
-    [Anonymous Symbol]                       0x08000334   Section        0  misc.o(.text.NVIC_Init)
-    [Anonymous Symbol]                       0x08000398   Section        0  misc.o(.text.NVIC_PriorityGroupConfig)
-    [Anonymous Symbol]                       0x080003ac   Section        0  stm32f4xx_it.o(.text.PendSV_Handler)
-    [Anonymous Symbol]                       0x080003b0   Section        0  stm32f4xx_rcc.o(.text.RCC_AHB1PeriphClockCmd)
-    [Anonymous Symbol]                       0x080003c8   Section        0  stm32f4xx_rcc.o(.text.RCC_APB1PeriphClockCmd)
-    [Anonymous Symbol]                       0x080003e0   Section        0  stm32f4xx_it.o(.text.SVC_Handler)
-    [Anonymous Symbol]                       0x080003e4   Section        0  stm32f4xx_it.o(.text.SysTick_Handler)
-    [Anonymous Symbol]                       0x080003e8   Section        0  system_stm32f4xx.o(.text.SystemInit)
-    [Anonymous Symbol]                       0x080004f4   Section        0  stm32f4xx_it.o(.text.UsageFault_Handler)
-    [Anonymous Symbol]                       0x080004f8   Section        0  stm32f4xx_wwdg.o(.text.WWDG_ClearFlag)
-    [Anonymous Symbol]                       0x08000508   Section        0  bsp_wwdg.o(.text.WWDG_Config)
-    [Anonymous Symbol]                       0x08000558   Section        0  stm32f4xx_wwdg.o(.text.WWDG_Enable)
-    [Anonymous Symbol]                       0x08000568   Section        0  stm32f4xx_wwdg.o(.text.WWDG_EnableIT)
-    [Anonymous Symbol]                       0x08000578   Section        0  bsp_wwdg.o(.text.WWDG_Feed)
-    [Anonymous Symbol]                       0x08000588   Section        0  stm32f4xx_it.o(.text.WWDG_IRQHandler)
-    [Anonymous Symbol]                       0x0800059c   Section        0  stm32f4xx_wwdg.o(.text.WWDG_SetCounter)
-    [Anonymous Symbol]                       0x080005ac   Section        0  stm32f4xx_wwdg.o(.text.WWDG_SetPrescaler)
-    [Anonymous Symbol]                       0x080005c0   Section        0  stm32f4xx_wwdg.o(.text.WWDG_SetWindowValue)
-    [Anonymous Symbol]                       0x080005e8   Section        0  main.o(.text.main)
-    i.__scatterload_copy                     0x0800064c   Section       14  handlers.o(i.__scatterload_copy)
-    i.__scatterload_null                     0x0800065a   Section        2  handlers.o(i.__scatterload_null)
-    i.__scatterload_zeroinit                 0x0800065c   Section       14  handlers.o(i.__scatterload_zeroinit)
+    [Anonymous Symbol]                       0x080002ac   Section        0  stm32f4xx_gpio.o(.text.GPIO_SetBits)
+    [Anonymous Symbol]                       0x080002b0   Section        0  stm32f4xx_it.o(.text.HardFault_Handler)
+    [Anonymous Symbol]                       0x080002b4   Section        0  bsp_led.o(.text.LED_GPIO_Config)
+    [Anonymous Symbol]                       0x08000330   Section        0  stm32f4xx_it.o(.text.MemManage_Handler)
+    [Anonymous Symbol]                       0x08000334   Section        0  stm32f4xx_it.o(.text.NMI_Handler)
+    [Anonymous Symbol]                       0x08000338   Section        0  misc.o(.text.NVIC_Init)
+    [Anonymous Symbol]                       0x0800039c   Section        0  misc.o(.text.NVIC_PriorityGroupConfig)
+    [Anonymous Symbol]                       0x080003b0   Section        0  stm32f4xx_it.o(.text.PendSV_Handler)
+    [Anonymous Symbol]                       0x080003b4   Section        0  stm32f4xx_rcc.o(.text.RCC_AHB1PeriphClockCmd)
+    [Anonymous Symbol]                       0x080003cc   Section        0  stm32f4xx_rcc.o(.text.RCC_APB1PeriphClockCmd)
+    [Anonymous Symbol]                       0x080003e4   Section        0  stm32f4xx_it.o(.text.SVC_Handler)
+    [Anonymous Symbol]                       0x080003e8   Section        0  stm32f4xx_it.o(.text.SysTick_Handler)
+    [Anonymous Symbol]                       0x080003ec   Section        0  system_stm32f4xx.o(.text.SystemInit)
+    [Anonymous Symbol]                       0x080004f8   Section        0  stm32f4xx_it.o(.text.UsageFault_Handler)
+    [Anonymous Symbol]                       0x080004fc   Section        0  stm32f4xx_wwdg.o(.text.WWDG_ClearFlag)
+    [Anonymous Symbol]                       0x0800050c   Section        0  bsp_wwdg.o(.text.WWDG_Config)
+    [Anonymous Symbol]                       0x0800055c   Section        0  stm32f4xx_wwdg.o(.text.WWDG_Enable)
+    [Anonymous Symbol]                       0x0800056c   Section        0  stm32f4xx_wwdg.o(.text.WWDG_EnableIT)
+    [Anonymous Symbol]                       0x0800057c   Section        0  bsp_wwdg.o(.text.WWDG_Feed)
+    [Anonymous Symbol]                       0x0800058c   Section        0  stm32f4xx_wwdg.o(.text.WWDG_GetFlagStatus)
+    [Anonymous Symbol]                       0x080005a0   Section        0  stm32f4xx_it.o(.text.WWDG_IRQHandler)
+    [Anonymous Symbol]                       0x080005dc   Section        0  stm32f4xx_wwdg.o(.text.WWDG_SetCounter)
+    [Anonymous Symbol]                       0x080005ec   Section        0  stm32f4xx_wwdg.o(.text.WWDG_SetPrescaler)
+    [Anonymous Symbol]                       0x08000600   Section        0  stm32f4xx_wwdg.o(.text.WWDG_SetWindowValue)
+    [Anonymous Symbol]                       0x08000628   Section        0  main.o(.text.main)
+    i.__scatterload_copy                     0x0800069e   Section       14  handlers.o(i.__scatterload_copy)
+    i.__scatterload_null                     0x080006ac   Section        2  handlers.o(i.__scatterload_null)
+    i.__scatterload_zeroinit                 0x080006ae   Section       14  handlers.o(i.__scatterload_zeroinit)
     wwdg_cnt                                 0x20000000   Data           1  bsp_wwdg.o(.bss.wwdg_cnt)
     [Anonymous Symbol]                       0x20000000   Section        0  bsp_wwdg.o(.bss.wwdg_cnt)
     STACK                                    0x20000008   Section     1024  startup_stm32f429_439xx.o(STACK)
@@ -2678,34 +2682,36 @@ Image Symbol Table
     DebugMon_Handler                         0x08000219   Thumb Code     2  stm32f4xx_it.o(.text.DebugMon_Handler)
     GPIO_Init                                0x0800021d   Thumb Code   138  stm32f4xx_gpio.o(.text.GPIO_Init)
     GPIO_ResetBits                           0x080002a9   Thumb Code     4  stm32f4xx_gpio.o(.text.GPIO_ResetBits)
-    HardFault_Handler                        0x080002ad   Thumb Code     2  stm32f4xx_it.o(.text.HardFault_Handler)
-    LED_GPIO_Config                          0x080002b1   Thumb Code   122  bsp_led.o(.text.LED_GPIO_Config)
-    MemManage_Handler                        0x0800032d   Thumb Code     2  stm32f4xx_it.o(.text.MemManage_Handler)
-    NMI_Handler                              0x08000331   Thumb Code     2  stm32f4xx_it.o(.text.NMI_Handler)
-    NVIC_Init                                0x08000335   Thumb Code    98  misc.o(.text.NVIC_Init)
-    NVIC_PriorityGroupConfig                 0x08000399   Thumb Code    20  misc.o(.text.NVIC_PriorityGroupConfig)
-    PendSV_Handler                           0x080003ad   Thumb Code     2  stm32f4xx_it.o(.text.PendSV_Handler)
-    RCC_AHB1PeriphClockCmd                   0x080003b1   Thumb Code    24  stm32f4xx_rcc.o(.text.RCC_AHB1PeriphClockCmd)
-    RCC_APB1PeriphClockCmd                   0x080003c9   Thumb Code    24  stm32f4xx_rcc.o(.text.RCC_APB1PeriphClockCmd)
-    SVC_Handler                              0x080003e1   Thumb Code     2  stm32f4xx_it.o(.text.SVC_Handler)
-    SysTick_Handler                          0x080003e5   Thumb Code     2  stm32f4xx_it.o(.text.SysTick_Handler)
-    SystemInit                               0x080003e9   Thumb Code   268  system_stm32f4xx.o(.text.SystemInit)
-    UsageFault_Handler                       0x080004f5   Thumb Code     2  stm32f4xx_it.o(.text.UsageFault_Handler)
-    WWDG_ClearFlag                           0x080004f9   Thumb Code    14  stm32f4xx_wwdg.o(.text.WWDG_ClearFlag)
-    WWDG_Config                              0x08000509   Thumb Code    80  bsp_wwdg.o(.text.WWDG_Config)
-    WWDG_Enable                              0x08000559   Thumb Code    16  stm32f4xx_wwdg.o(.text.WWDG_Enable)
-    WWDG_EnableIT                            0x08000569   Thumb Code    14  stm32f4xx_wwdg.o(.text.WWDG_EnableIT)
-    WWDG_Feed                                0x08000579   Thumb Code    14  bsp_wwdg.o(.text.WWDG_Feed)
-    WWDG_IRQHandler                          0x08000589   Thumb Code    18  stm32f4xx_it.o(.text.WWDG_IRQHandler)
-    WWDG_SetCounter                          0x0800059d   Thumb Code    16  stm32f4xx_wwdg.o(.text.WWDG_SetCounter)
-    WWDG_SetPrescaler                        0x080005ad   Thumb Code    20  stm32f4xx_wwdg.o(.text.WWDG_SetPrescaler)
-    WWDG_SetWindowValue                      0x080005c1   Thumb Code    40  stm32f4xx_wwdg.o(.text.WWDG_SetWindowValue)
-    main                                     0x080005e9   Thumb Code   100  main.o(.text.main)
-    __scatterload_copy                       0x0800064d   Thumb Code    14  handlers.o(i.__scatterload_copy)
-    __scatterload_null                       0x0800065b   Thumb Code     2  handlers.o(i.__scatterload_null)
-    __scatterload_zeroinit                   0x0800065d   Thumb Code    14  handlers.o(i.__scatterload_zeroinit)
-    Region$$Table$$Base                      0x0800066c   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x0800067c   Number         0  anon$$obj.o(Region$$Table)
+    GPIO_SetBits                             0x080002ad   Thumb Code     4  stm32f4xx_gpio.o(.text.GPIO_SetBits)
+    HardFault_Handler                        0x080002b1   Thumb Code     2  stm32f4xx_it.o(.text.HardFault_Handler)
+    LED_GPIO_Config                          0x080002b5   Thumb Code   122  bsp_led.o(.text.LED_GPIO_Config)
+    MemManage_Handler                        0x08000331   Thumb Code     2  stm32f4xx_it.o(.text.MemManage_Handler)
+    NMI_Handler                              0x08000335   Thumb Code     2  stm32f4xx_it.o(.text.NMI_Handler)
+    NVIC_Init                                0x08000339   Thumb Code    98  misc.o(.text.NVIC_Init)
+    NVIC_PriorityGroupConfig                 0x0800039d   Thumb Code    20  misc.o(.text.NVIC_PriorityGroupConfig)
+    PendSV_Handler                           0x080003b1   Thumb Code     2  stm32f4xx_it.o(.text.PendSV_Handler)
+    RCC_AHB1PeriphClockCmd                   0x080003b5   Thumb Code    24  stm32f4xx_rcc.o(.text.RCC_AHB1PeriphClockCmd)
+    RCC_APB1PeriphClockCmd                   0x080003cd   Thumb Code    24  stm32f4xx_rcc.o(.text.RCC_APB1PeriphClockCmd)
+    SVC_Handler                              0x080003e5   Thumb Code     2  stm32f4xx_it.o(.text.SVC_Handler)
+    SysTick_Handler                          0x080003e9   Thumb Code     2  stm32f4xx_it.o(.text.SysTick_Handler)
+    SystemInit                               0x080003ed   Thumb Code   268  system_stm32f4xx.o(.text.SystemInit)
+    UsageFault_Handler                       0x080004f9   Thumb Code     2  stm32f4xx_it.o(.text.UsageFault_Handler)
+    WWDG_ClearFlag                           0x080004fd   Thumb Code    14  stm32f4xx_wwdg.o(.text.WWDG_ClearFlag)
+    WWDG_Config                              0x0800050d   Thumb Code    80  bsp_wwdg.o(.text.WWDG_Config)
+    WWDG_Enable                              0x0800055d   Thumb Code    16  stm32f4xx_wwdg.o(.text.WWDG_Enable)
+    WWDG_EnableIT                            0x0800056d   Thumb Code    14  stm32f4xx_wwdg.o(.text.WWDG_EnableIT)
+    WWDG_Feed                                0x0800057d   Thumb Code    14  bsp_wwdg.o(.text.WWDG_Feed)
+    WWDG_GetFlagStatus                       0x0800058d   Thumb Code    18  stm32f4xx_wwdg.o(.text.WWDG_GetFlagStatus)
+    WWDG_IRQHandler                          0x080005a1   Thumb Code    58  stm32f4xx_it.o(.text.WWDG_IRQHandler)
+    WWDG_SetCounter                          0x080005dd   Thumb Code    16  stm32f4xx_wwdg.o(.text.WWDG_SetCounter)
+    WWDG_SetPrescaler                        0x080005ed   Thumb Code    20  stm32f4xx_wwdg.o(.text.WWDG_SetPrescaler)
+    WWDG_SetWindowValue                      0x08000601   Thumb Code    40  stm32f4xx_wwdg.o(.text.WWDG_SetWindowValue)
+    main                                     0x08000629   Thumb Code   118  main.o(.text.main)
+    __scatterload_copy                       0x0800069f   Thumb Code    14  handlers.o(i.__scatterload_copy)
+    __scatterload_null                       0x080006ad   Thumb Code     2  handlers.o(i.__scatterload_null)
+    __scatterload_zeroinit                   0x080006af   Thumb Code    14  handlers.o(i.__scatterload_zeroinit)
+    Region$$Table$$Base                      0x080006bc   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x080006cc   Number         0  anon$$obj.o(Region$$Table)
     __initial_sp                             0x20000408   Data           0  startup_stm32f429_439xx.o(STACK)
 
 
@@ -2716,9 +2722,9 @@ Memory Map of the image
 
   Image Entry point : 0x080001ad
 
-  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x0000067c, Max: 0x00100000, ABSOLUTE)
+  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x000006cc, Max: 0x00100000, ABSOLUTE)
 
-    Execution Region ER_IROM1 (Exec base: 0x08000000, Load base: 0x08000000, Size: 0x0000067c, Max: 0x00100000, ABSOLUTE)
+    Execution Region ER_IROM1 (Exec base: 0x08000000, Load base: 0x08000000, Size: 0x000006cc, Max: 0x00100000, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
@@ -2741,55 +2747,57 @@ Memory Map of the image
     0x0800021c   0x0800021c   0x0000008a   Code   RO          668    .text.GPIO_Init     stm32f4xx_gpio.o
     0x080002a6   0x080002a6   0x00000002   PAD
     0x080002a8   0x080002a8   0x00000004   Code   RO          684    .text.GPIO_ResetBits  stm32f4xx_gpio.o
-    0x080002ac   0x080002ac   0x00000002   Code   RO         1733    .text.HardFault_Handler  stm32f4xx_it.o
-    0x080002ae   0x080002ae   0x00000002   PAD
-    0x080002b0   0x080002b0   0x0000007a   Code   RO         1772    .text.LED_GPIO_Config  bsp_led.o
-    0x0800032a   0x0800032a   0x00000002   PAD
-    0x0800032c   0x0800032c   0x00000002   Code   RO         1735    .text.MemManage_Handler  stm32f4xx_it.o
+    0x080002ac   0x080002ac   0x00000004   Code   RO          682    .text.GPIO_SetBits  stm32f4xx_gpio.o
+    0x080002b0   0x080002b0   0x00000002   Code   RO         1733    .text.HardFault_Handler  stm32f4xx_it.o
+    0x080002b2   0x080002b2   0x00000002   PAD
+    0x080002b4   0x080002b4   0x0000007a   Code   RO         1772    .text.LED_GPIO_Config  bsp_led.o
     0x0800032e   0x0800032e   0x00000002   PAD
-    0x08000330   0x08000330   0x00000002   Code   RO         1731    .text.NMI_Handler   stm32f4xx_it.o
+    0x08000330   0x08000330   0x00000002   Code   RO         1735    .text.MemManage_Handler  stm32f4xx_it.o
     0x08000332   0x08000332   0x00000002   PAD
-    0x08000334   0x08000334   0x00000062   Code   RO           27    .text.NVIC_Init     misc.o
-    0x08000396   0x08000396   0x00000002   PAD
-    0x08000398   0x08000398   0x00000014   Code   RO           25    .text.NVIC_PriorityGroupConfig  misc.o
-    0x080003ac   0x080003ac   0x00000002   Code   RO         1745    .text.PendSV_Handler  stm32f4xx_it.o
-    0x080003ae   0x080003ae   0x00000002   PAD
-    0x080003b0   0x080003b0   0x00000018   Code   RO         1049    .text.RCC_AHB1PeriphClockCmd  stm32f4xx_rcc.o
-    0x080003c8   0x080003c8   0x00000018   Code   RO         1055    .text.RCC_APB1PeriphClockCmd  stm32f4xx_rcc.o
-    0x080003e0   0x080003e0   0x00000002   Code   RO         1743    .text.SVC_Handler   stm32f4xx_it.o
-    0x080003e2   0x080003e2   0x00000002   PAD
-    0x080003e4   0x080003e4   0x00000002   Code   RO         1747    .text.SysTick_Handler  stm32f4xx_it.o
+    0x08000334   0x08000334   0x00000002   Code   RO         1731    .text.NMI_Handler   stm32f4xx_it.o
+    0x08000336   0x08000336   0x00000002   PAD
+    0x08000338   0x08000338   0x00000062   Code   RO           27    .text.NVIC_Init     misc.o
+    0x0800039a   0x0800039a   0x00000002   PAD
+    0x0800039c   0x0800039c   0x00000014   Code   RO           25    .text.NVIC_PriorityGroupConfig  misc.o
+    0x080003b0   0x080003b0   0x00000002   Code   RO         1745    .text.PendSV_Handler  stm32f4xx_it.o
+    0x080003b2   0x080003b2   0x00000002   PAD
+    0x080003b4   0x080003b4   0x00000018   Code   RO         1049    .text.RCC_AHB1PeriphClockCmd  stm32f4xx_rcc.o
+    0x080003cc   0x080003cc   0x00000018   Code   RO         1055    .text.RCC_APB1PeriphClockCmd  stm32f4xx_rcc.o
+    0x080003e4   0x080003e4   0x00000002   Code   RO         1743    .text.SVC_Handler   stm32f4xx_it.o
     0x080003e6   0x080003e6   0x00000002   PAD
-    0x080003e8   0x080003e8   0x0000010c   Code   RO           11    .text.SystemInit    system_stm32f4xx.o
-    0x080004f4   0x080004f4   0x00000002   Code   RO         1739    .text.UsageFault_Handler  stm32f4xx_it.o
-    0x080004f6   0x080004f6   0x00000002   PAD
-    0x080004f8   0x080004f8   0x0000000e   Code   RO         1711    .text.WWDG_ClearFlag  stm32f4xx_wwdg.o
-    0x08000506   0x08000506   0x00000002   PAD
-    0x08000508   0x08000508   0x00000050   Code   RO         1780    .text.WWDG_Config   bsp_wwdg.o
-    0x08000558   0x08000558   0x00000010   Code   RO         1707    .text.WWDG_Enable   stm32f4xx_wwdg.o
-    0x08000568   0x08000568   0x0000000e   Code   RO         1703    .text.WWDG_EnableIT  stm32f4xx_wwdg.o
-    0x08000576   0x08000576   0x00000002   PAD
-    0x08000578   0x08000578   0x0000000e   Code   RO         1782    .text.WWDG_Feed     bsp_wwdg.o
-    0x08000586   0x08000586   0x00000002   PAD
-    0x08000588   0x08000588   0x00000012   Code   RO         1749    .text.WWDG_IRQHandler  stm32f4xx_it.o
-    0x0800059a   0x0800059a   0x00000002   PAD
-    0x0800059c   0x0800059c   0x00000010   Code   RO         1705    .text.WWDG_SetCounter  stm32f4xx_wwdg.o
-    0x080005ac   0x080005ac   0x00000014   Code   RO         1699    .text.WWDG_SetPrescaler  stm32f4xx_wwdg.o
-    0x080005c0   0x080005c0   0x00000028   Code   RO         1701    .text.WWDG_SetWindowValue  stm32f4xx_wwdg.o
-    0x080005e8   0x080005e8   0x00000064   Code   RO         1721    .text.main          main.o
-    0x0800064c   0x0800064c   0x0000000e   Code   RO         1827    i.__scatterload_copy  mc_w.l(handlers.o)
-    0x0800065a   0x0800065a   0x00000002   Code   RO         1828    i.__scatterload_null  mc_w.l(handlers.o)
-    0x0800065c   0x0800065c   0x0000000e   Code   RO         1829    i.__scatterload_zeroinit  mc_w.l(handlers.o)
-    0x0800066a   0x0800066a   0x00000002   PAD
-    0x0800066c   0x0800066c   0x00000010   Data   RO         1826    Region$$Table       anon$$obj.o
+    0x080003e8   0x080003e8   0x00000002   Code   RO         1747    .text.SysTick_Handler  stm32f4xx_it.o
+    0x080003ea   0x080003ea   0x00000002   PAD
+    0x080003ec   0x080003ec   0x0000010c   Code   RO           11    .text.SystemInit    system_stm32f4xx.o
+    0x080004f8   0x080004f8   0x00000002   Code   RO         1739    .text.UsageFault_Handler  stm32f4xx_it.o
+    0x080004fa   0x080004fa   0x00000002   PAD
+    0x080004fc   0x080004fc   0x0000000e   Code   RO         1711    .text.WWDG_ClearFlag  stm32f4xx_wwdg.o
+    0x0800050a   0x0800050a   0x00000002   PAD
+    0x0800050c   0x0800050c   0x00000050   Code   RO         1780    .text.WWDG_Config   bsp_wwdg.o
+    0x0800055c   0x0800055c   0x00000010   Code   RO         1707    .text.WWDG_Enable   stm32f4xx_wwdg.o
+    0x0800056c   0x0800056c   0x0000000e   Code   RO         1703    .text.WWDG_EnableIT  stm32f4xx_wwdg.o
+    0x0800057a   0x0800057a   0x00000002   PAD
+    0x0800057c   0x0800057c   0x0000000e   Code   RO         1782    .text.WWDG_Feed     bsp_wwdg.o
+    0x0800058a   0x0800058a   0x00000002   PAD
+    0x0800058c   0x0800058c   0x00000012   Code   RO         1709    .text.WWDG_GetFlagStatus  stm32f4xx_wwdg.o
+    0x0800059e   0x0800059e   0x00000002   PAD
+    0x080005a0   0x080005a0   0x0000003a   Code   RO         1749    .text.WWDG_IRQHandler  stm32f4xx_it.o
+    0x080005da   0x080005da   0x00000002   PAD
+    0x080005dc   0x080005dc   0x00000010   Code   RO         1705    .text.WWDG_SetCounter  stm32f4xx_wwdg.o
+    0x080005ec   0x080005ec   0x00000014   Code   RO         1699    .text.WWDG_SetPrescaler  stm32f4xx_wwdg.o
+    0x08000600   0x08000600   0x00000028   Code   RO         1701    .text.WWDG_SetWindowValue  stm32f4xx_wwdg.o
+    0x08000628   0x08000628   0x00000076   Code   RO         1721    .text.main          main.o
+    0x0800069e   0x0800069e   0x0000000e   Code   RO         1827    i.__scatterload_copy  mc_w.l(handlers.o)
+    0x080006ac   0x080006ac   0x00000002   Code   RO         1828    i.__scatterload_null  mc_w.l(handlers.o)
+    0x080006ae   0x080006ae   0x0000000e   Code   RO         1829    i.__scatterload_zeroinit  mc_w.l(handlers.o)
+    0x080006bc   0x080006bc   0x00000010   Data   RO         1826    Region$$Table       anon$$obj.o
 
 
-    Execution Region RW_IRAM1 (Exec base: 0x20000000, Load base: 0x0800067c, Size: 0x00000408, Max: 0x00030000, ABSOLUTE)
+    Execution Region RW_IRAM1 (Exec base: 0x20000000, Load base: 0x080006cc, Size: 0x00000408, Max: 0x00030000, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
     0x20000000        -       0x00000001   Zero   RW         1784    .bss.wwdg_cnt       bsp_wwdg.o
-    0x20000001   0x0800067c   0x00000007   PAD
+    0x20000001   0x080006cc   0x00000007   PAD
     0x20000008        -       0x00000400   Zero   RW            1    STACK               startup_stm32f429_439xx.o
 
 
@@ -2802,19 +2810,19 @@ Image component sizes
 
        122          0          0          0          0       1879   bsp_led.o
         94          0          0          0          1       3717   bsp_wwdg.o
-       100          0          0          0          0       1399   main.o
+       118          0          0          0          0       1425   main.o
        118          0          0          0          0       3446   misc.o
         36          8        428          0       1024        940   startup_stm32f429_439xx.o
-       142          0          0          0          0       4879   stm32f4xx_gpio.o
-        36          0          0          0          0       1853   stm32f4xx_it.o
+       146          0          0          0          0       4879   stm32f4xx_gpio.o
+        76          0          0          0          0       1975   stm32f4xx_it.o
         48          0          0          0          0      13734   stm32f4xx_rcc.o
-       120          0          0          0          0       2362   stm32f4xx_wwdg.o
+       138          0          0          0          0       2362   stm32f4xx_wwdg.o
        268          0          0          0          0       3455   system_stm32f4xx.o
 
     ----------------------------------------------------------------------
-      1116          8        444          0       1032      37664   Object Totals
+      1198          8        444          0       1032      37812   Object Totals
          0          0         16          0          0          0   (incl. Generated)
-        32          0          0          0          7          0   (incl. Padding)
+        34          0          0          0          7          0   (incl. Padding)
 
     ----------------------------------------------------------------------
 
@@ -2832,8 +2840,8 @@ Image component sizes
         48         10          0          0          0         68   init.o
 
     ----------------------------------------------------------------------
-       100         18          0          0          0         68   Library Totals
-         2          0          0          0          0          0   (incl. Padding)
+        98         18          0          0          0         68   Library Totals
+         0          0          0          0          0          0   (incl. Padding)
 
     ----------------------------------------------------------------------
 
@@ -2842,7 +2850,7 @@ Image component sizes
         98         18          0          0          0         68   mc_w.l
 
     ----------------------------------------------------------------------
-       100         18          0          0          0         68   Library Totals
+        98         18          0          0          0         68   Library Totals
 
     ----------------------------------------------------------------------
 
@@ -2851,15 +2859,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-      1216         26        444          0       1032      37724   Grand Totals
-      1216         26        444          0       1032      37724   ELF Image Totals
-      1216         26        444          0          0          0   ROM Totals
+      1296         26        444          0       1032      37872   Grand Totals
+      1296         26        444          0       1032      37872   ELF Image Totals
+      1296         26        444          0          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                 1660 (   1.62kB)
+    Total RO  Size (Code + RO Data)                 1740 (   1.70kB)
     Total RW  Size (RW Data + ZI Data)              1032 (   1.01kB)
-    Total ROM Size (Code + RO Data + RW Data)       1660 (   1.62kB)
+    Total ROM Size (Code + RO Data + RW Data)       1740 (   1.70kB)
 
 ==============================================================================
 
