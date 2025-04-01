@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "bsp_adc.h": "c",
+        "bsp_debug_usart.h": "c",
+        "bsp_systick.h": "c"
+    }
+}

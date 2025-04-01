@@ -18,6 +18,8 @@
 
 // ADC DMA 通道宏定义，这里我们使用DMA传输
 #define RHEOSTAT_ADC_DMA_CLK      RCC_AHB1Periph_DMA2
+
+// ADC1专配的DMA就是通道0，流0
 #define RHEOSTAT_ADC_DMA_CHANNEL  DMA_Channel_0
 #define RHEOSTAT_ADC_DMA_STREAM   DMA2_Stream0
 
