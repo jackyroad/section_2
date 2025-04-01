@@ -2,7 +2,7 @@
  * @file   main.c
  * @brief
  * @author leshen (13762713527@qq.com)
- * @version{master} (commit2:{添加了led和beep功能})
+ * @version{master} (commit3:{})
  * @date 2025-03-31
  * @copyright Copyright (c) 2025
  */

@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "bsp_wwdg.h": "c",
+        "stm32f4xx.h": "c",
+        "stm32f4xx_it.h": "c"
+    }
+}

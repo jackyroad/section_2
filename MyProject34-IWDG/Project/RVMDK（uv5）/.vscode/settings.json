@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "bsp_iwdg.h": "c",
+        "bsp_basic_time.h": "c"
+    }
+}
