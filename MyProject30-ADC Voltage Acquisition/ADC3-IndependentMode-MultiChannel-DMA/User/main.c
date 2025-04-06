@@ -1,18 +1,10 @@
 /**
- ******************************************************************************
- * @file    main.c
- * @author  fire
- * @version V1.0
- * @date    2015-xx-xx
- * @brief   ADC例程
- ******************************************************************************
- * @attention
- *
- * 实验平台:野火  STM32 F429 开发板
- * 论坛    :http://www.firebbs.cn
- * 淘宝    :https://fire-stm32.taobao.com
- *
- ******************************************************************************
+ * @file   main.c
+ * @brief 
+ * @author leshen (13762713527@qq.com)
+ * @version{master} (commit:{gitCommitShort})
+ * @date 2025-04-02
+ * @copyright Copyright (c) 2025
  */
 
 #include "stm32f4xx.h"

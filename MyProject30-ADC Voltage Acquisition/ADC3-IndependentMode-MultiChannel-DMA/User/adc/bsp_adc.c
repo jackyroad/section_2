@@ -1,6 +1,6 @@
 /**
  * @file   bsp_adc.c
- * @brief  单通道ADC驱动
+ * @brief  多通道ADC驱动(DMA)
  * @author leshen (13762713527@qq.com)
  * @date 2025-04-01
  * @copyright Copyright (c) 2025
