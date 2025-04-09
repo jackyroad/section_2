@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "bsp_sdram.h": "c",
+        "bsp_debug_usart.h": "c"
+    }
+}

@@ -15,6 +15,7 @@
 
 /**
   * @brief  FMC SDRAM 数据基地址
+  * @note   SDRAM Bank2 地址:0xD000 0000 ~0xDFFF FFFF,一共4x64M空间
   */   
 #define SDRAM_BANK_ADDR     ((uint32_t)0xD0000000)
   
@@ -70,6 +71,9 @@
 /*信息输出*/
 #define SDRAM_DEBUG_ON         1
 
+// fmt：格式化字符串（如 "Init success, size=%d"）
+// arg...：可变参数（对应 fmt 中的占位符，如 size 的值）。
+// ##arg：确保当 arg 为空时，宏仍能正确展开（避免语法错误）。
 #define SDRAM_INFO(fmt,arg...)           printf("<<-SDRAM-INFO->> "fmt"\n",##arg)
 #define SDRAM_ERROR(fmt,arg...)          printf("<<-SDRAM-ERROR->> "fmt"\n",##arg)
 #define SDRAM_DEBUG(fmt,arg...)          do{\
@@ -325,14 +329,13 @@
 #define FMC_LDQM_PINSOURCE        GPIO_PinSource0
 #define FMC_LDQM_AF               GPIO_AF_FMC
 
-
-/** @defgroup STM32429 SDRAM函数
-  * @{
-  */ 
-void  SDRAM_Init(void);
-void  SDRAM_WriteBuffer(uint32_t* pBuffer, uint32_t uwWriteAddress, uint32_t uwBufferSize);
-void  SDRAM_ReadBuffer(uint32_t* pBuffer, uint32_t uwReadAddress, uint32_t uwBufferSize);
+    /** @defgroup STM32429 SDRAM函数
+     * @{
+     */
+void SDRAM_Init(void);
+void SDRAM_WriteBuffer(uint32_t* pBuffer, uint32_t uwWriteAddress, uint32_t uwBufferSize);
+void SDRAM_ReadBuffer(uint32_t* pBuffer, uint32_t uwReadAddress, uint32_t uwBufferSize);
 uint8_t SDRAM_Test(void);
-void  Disable_NAND_CS(void);
+void Disable_NAND_CS(void);
 
 #endif /* __SDRAM_H */

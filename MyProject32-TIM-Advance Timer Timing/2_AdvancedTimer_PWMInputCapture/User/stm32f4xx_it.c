@@ -170,6 +170,7 @@ void  ADVANCE_TIM_IRQHandler (void)
   TIM_ClearITPendingBit(ADVANCE_TIM, TIM_IT_CC1);
 
   /* 获取输入捕获值 */
+  /* IC1Value即IC1捕获在第一次中断*/
   IC1Value = TIM_GetCapture1(ADVANCE_TIM);
   IC2Value = TIM_GetCapture2(ADVANCE_TIM);	
   printf("IC1Value = %d  IC2Value = %d ",IC1Value,IC2Value);
@@ -181,21 +182,22 @@ void  ADVANCE_TIM_IRQHandler (void)
 		DutyCycle = (float)((IC2Value+1) * 100) / (IC1Value+1);
 
     /* 频率计算 */
-    Frequency = 180000000/1800/(float)IC1Value;
-		printf("占空比：%0.2f%%   频率：%0.2fHz\n",DutyCycle,Frequency);
-  }
-  else
-  {
-    DutyCycle = 0;
-    Frequency = 0;
-  }
+  /* 定时器时钟的频率是100kHZ，所以周期是1/100k*IC1Value，频率即为倒数 */
+  Frequency = 180000000/1800/(float)IC1Value;
+  printf("占空比：%0.2f%%   频率：%0.2fHz\n",DutyCycle,Frequency);
+}
+else
+{
+  DutyCycle = 0;
+  Frequency = 0;
+}
 }
 /**
-  * @}
-  */ 
+* @}
+*/
 
-/**
-  * @}
-  */ 
+  /**
+   * @}
+   */
 
-/************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
+  /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

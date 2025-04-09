@@ -26,7 +26,7 @@
 //3.使用编译器强制指定变量定义的地址（必须定义为全局变量）
 //4.使用sct文件实现自动分配变量的地址到SDRAM
 
-void Delay(__IO u32 nCount); 
+void Delay(__IO uint32_t nCount);
 
 /*绝对定位方式访问SDRAM,这种方式必须定义成全局变量*/
 uint8_t testValue __attribute__((at(SDRAM_BANK_ADDR)));

@@ -32,8 +32,8 @@ static void SDRAM_delay(__IO uint32_t nCount)
 
 /**
   * @brief  初始化控制SDRAM的IO
-  * @param  无
-  * @retval 无
+  * @param  None
+  * @retval None
   */
 static void SDRAM_GPIO_Config(void)
 {   
@@ -236,9 +236,9 @@ static void SDRAM_GPIO_Config(void)
 }
 
 /**
-  * @brief  对SDRAM芯片进行初始化配置
-  * @param  None. 
-  * @retval None.
+  * @brief  使用命令对SDRAM芯片进行初始化配置
+  * @param  None
+  * @retval None
   */
 static void SDRAM_InitSequence(void)
 {
@@ -246,11 +246,12 @@ static void SDRAM_InitSequence(void)
   uint32_t tmpr = 0;
   
 /* Step 3 --------------------------------------------------------------------*/
-  /* 配置命令：开启提供给SDRAM的时钟 */
+  /* 配置命令：开启提供给SDRAM的时钟，上电开启时钟后至少需要稳定100us */
   FMC_SDRAMCommandStructure.FMC_CommandMode = FMC_Command_Mode_CLK_Enabled;
   FMC_SDRAMCommandStructure.FMC_CommandTarget = FMC_COMMAND_TARGET_BANK;
   FMC_SDRAMCommandStructure.FMC_AutoRefreshNumber = 0;
   FMC_SDRAMCommandStructure.FMC_ModeRegisterDefinition = 0;
+
   /* 检查SDRAM标志，等待至SDRAM空闲 */ 
   while(FMC_GetFlagStatus(FMC_BANK_SDRAM, FMC_FLAG_Busy) != RESET)
   {
@@ -268,10 +269,11 @@ static void SDRAM_InitSequence(void)
   FMC_SDRAMCommandStructure.FMC_CommandTarget = FMC_COMMAND_TARGET_BANK;
   FMC_SDRAMCommandStructure.FMC_AutoRefreshNumber = 0;
   FMC_SDRAMCommandStructure.FMC_ModeRegisterDefinition = 0;
+
   /* 检查SDRAM标志，等待至SDRAM空闲 */ 
   while(FMC_GetFlagStatus(FMC_BANK_SDRAM, FMC_FLAG_Busy) != RESET)
   {
-  }
+  } 
    /* 发送上述命令*/
   FMC_SDRAMCmdConfig(&FMC_SDRAMCommandStructure);
   
@@ -291,7 +293,7 @@ static void SDRAM_InitSequence(void)
  
  /* Step 7 --------------------------------------------------------------------*/
   /* 设置sdram寄存器配置 */
-  tmpr = (uint32_t)SDRAM_MODEREG_BURST_LENGTH_4          |
+  tmpr = (uint32_t)SDRAM_MODEREG_BURST_LENGTH_4          |    // 对应后续以字为单位向sdram写入数据
                    SDRAM_MODEREG_BURST_TYPE_SEQUENTIAL   |
                    SDRAM_MODEREG_CAS_LATENCY_2           |
                    SDRAM_MODEREG_OPERATING_MODE_STANDARD |
@@ -299,7 +301,7 @@ static void SDRAM_InitSequence(void)
   
   /* 配置命令：设置SDRAM寄存器 */
   FMC_SDRAMCommandStructure.FMC_CommandMode = FMC_Command_Mode_LoadMode;
-  FMC_SDRAMCommandStructure.FMC_CommandTarget = FMC_COMMAND_TARGET_BANK;
+  FMC_SDRAMCommandStructure.FMC_CommandTarget = FMC_COMMAND_TARGET_BANK; 
   FMC_SDRAMCommandStructure.FMC_AutoRefreshNumber = 1;
   FMC_SDRAMCommandStructure.FMC_ModeRegisterDefinition = tmpr;
   /* 检查SDRAM标志，等待至SDRAM空闲 */ 
@@ -331,7 +333,9 @@ static void SDRAM_InitSequence(void)
   */
 void SDRAM_Init(void)
 {
+  /* 初始化结构体 */
   FMC_SDRAMInitTypeDef  FMC_SDRAMInitStructure;
+  /* 时序结构体 */
   FMC_SDRAMTimingInitTypeDef  FMC_SDRAMTimingInitStructure; 
   
   /* 配置FMC接口相关的 GPIO*/
@@ -341,52 +345,69 @@ void SDRAM_Init(void)
   RCC_AHB3PeriphClockCmd(RCC_AHB3Periph_FMC, ENABLE);
  
   /* SDRAM时序结构体，根据SDRAM参数表配置----------------*/
- /* SDCLK： 90 Mhz (HCLK/2 :180Mhz/2) 1个时钟周期Tsdclk =1/90MHz=11.11ns*/
-  /* TMRD: 2 Clock cycles */
-  FMC_SDRAMTimingInitStructure.FMC_LoadToActiveDelay    = 2;      
-  /* TXSR: min=70ns (7x11.11ns) */
-  FMC_SDRAMTimingInitStructure.FMC_ExitSelfRefreshDelay = 7;
-  /* TRAS: min=42ns (4x11.11ns) max=120k (ns) */
-  FMC_SDRAMTimingInitStructure.FMC_SelfRefreshTime      = 4;
-  /* TRC:  min=70 (7x11.11ns) */        
-  FMC_SDRAMTimingInitStructure.FMC_RowCycleDelay        = 7;         
-  /* TWR:  min=1+ 7ns (1+1x11.11ns) */
-  FMC_SDRAMTimingInitStructure.FMC_WriteRecoveryTime    = 2;      
-  /* TRP:  15ns => 2x11.11ns */
-  FMC_SDRAMTimingInitStructure.FMC_RPDelay              = 2;                
-  /* TRCD: 15ns => 2x11.11ns */
-  FMC_SDRAMTimingInitStructure.FMC_RCDDelay             = 2;
+  /* SDCLK： 90 Mhz (HCLK/2 :180Mhz/2) 1个时钟周期Tsdclk =1/90MHz=11.11ns*/
+  /* TMRD: 2 Clock cycles 发送加载模式寄存器命令后要等待的时间，过了这段时间才可以发送行有效或刷新命令 */
+  FMC_SDRAMTimingInitStructure.FMC_LoadToActiveDelay    = 2;
 
-/* FMC SDRAM 控制配置 */
+  /* TXSR: min=66ns (7x11.11ns) 退出自我刷新命令后要等待的时间，过了这段时间才可以发送行有效命令 */
+  FMC_SDRAMTimingInitStructure.FMC_ExitSelfRefreshDelay = 7;
+
+  /* TRAS: min=42ns (4x11.11ns) max=120k (ns) 发送行有效命令后要等待的时间，过了这段时间才执行预充电命令 */
+  FMC_SDRAMTimingInitStructure.FMC_SelfRefreshTime      = 4;
+
+  /* TRC:  min=60 (6x11.11ns) 两个行有效命令之间的延迟，以及两个相邻刷新命令之间的延迟 */
+  FMC_SDRAMTimingInitStructure.FMC_RowCycleDelay        = 6;
+
+  /* TWR:  min=2clk 两个行有效命令之间的延迟，以及两个相邻刷新命令之间的延迟 */
+  FMC_SDRAMTimingInitStructure.FMC_WriteRecoveryTime    = 2;
+
+  /* TRP:  15ns => 2x11.11ns 预充电命令与其它命令之间的延迟 */
+  FMC_SDRAMTimingInitStructure.FMC_RPDelay              = 2;
+
+  /* TRCD: 15ns => 2x11.11ns 行有效命令到列读写命令之间的延迟 */
+  FMC_SDRAMTimingInitStructure.FMC_RCDDelay             = 2;
+  /* ------------------------------------------------------------ */
+
+ /* ----------------------FMC SDRAM 控制配置---------------------- */
   /*选择存储区域*/
   FMC_SDRAMInitStructure.FMC_Bank = FMC_BANK_SDRAM;
+
   /* 行地址线宽度: [8:0] */
   FMC_SDRAMInitStructure.FMC_ColumnBitsNumber = FMC_ColumnBits_Number_9b;
+
   /* 列地址线宽度: [12:0] */
   FMC_SDRAMInitStructure.FMC_RowBitsNumber = FMC_RowBits_Number_13b;
+
   /* 数据线宽度 */
   FMC_SDRAMInitStructure.FMC_SDMemoryDataWidth = SDRAM_MEMORY_WIDTH; 
+
   /* SDRAM内部bank数量*/
   FMC_SDRAMInitStructure.FMC_InternalBankNumber = FMC_InternalBank_Number_4;
+
   /* CAS潜伏期 */
   FMC_SDRAMInitStructure.FMC_CASLatency = SDRAM_CAS_LATENCY; 
+
   /* 禁止写保护*/
   FMC_SDRAMInitStructure.FMC_WriteProtection = FMC_Write_Protection_Disable;
+
   /* SDCLK时钟分频因子，SDCLK = HCLK/SDCLOCK_PERIOD*/
   FMC_SDRAMInitStructure.FMC_SDClockPeriod = SDCLOCK_PERIOD; 
+
   /* 突发读模式设置*/  
   FMC_SDRAMInitStructure.FMC_ReadBurst = SDRAM_READBURST;
+
   /* 读延迟配置 */
   FMC_SDRAMInitStructure.FMC_ReadPipeDelay = FMC_ReadPipe_Delay_0;
+
   /* SDRAM时序参数 */
   FMC_SDRAMInitStructure.FMC_SDRAMTimingStruct = &FMC_SDRAMTimingInitStructure;
-  
+  /* ------------------------------------------------------------ */
+
   /* 调用初始化函数，向寄存器写入配置 */
   FMC_SDRAMInit(&FMC_SDRAMInitStructure); 
   
   /* 执行FMC SDRAM的初始化流程*/
   SDRAM_InitSequence(); 
-  
 }
 
 
