@@ -8,50 +8,51 @@
 
 #define COLOR_TIM           						TIM5
 #define COLOR_TIM_CLK       						RCC_APB1Periph_TIM5
-#define COLOR_TIM_APBxClock_FUN        RCC_APB1PeriphClockCmd
-
-#define COLOR_TIM_GPIO_CLK             (RCC_AHB1Periph_GPIOH)
+/* 用宏封装了TIM的时钟打开函数 */
+#define COLOR_TIM_APBxClock_FUN                     RCC_APB1PeriphClockCmd
+#define COLOR_TIM_GPIO_CLK                          (RCC_AHB1Periph_GPIOH)
 
 
 /************红灯***************/
+#define COLOR_RED_PIN                               GPIO_Pin_10                 
+#define COLOR_RED_GPIO_PORT                         GPIOH                      
+#define COLOR_RED_PINSOURCE						    GPIO_PinSource10
+#define COLOR_RED_AF								GPIO_AF_TIM5
 
-#define COLOR_RED_PIN                  GPIO_Pin_10                 
-#define COLOR_RED_GPIO_PORT            GPIOH                      
-#define COLOR_RED_PINSOURCE						GPIO_PinSource10
-#define COLOR_RED_AF										GPIO_AF_TIM5
+#define COLOR_RED_TIM_OCxInit                       TIM_OC1Init            //通道初始化函数
+#define COLOR_RED_TIM_OCxPreloadConfig              TIM_OC1PreloadConfig   //通道重载配置函数
 
-#define  COLOR_RED_TIM_OCxInit                TIM_OC1Init            //通道初始化函数
-#define  COLOR_RED_TIM_OCxPreloadConfig       TIM_OC1PreloadConfig //通道重载配置函数
-
-//通道比较寄存器，以TIMx->CCRx方式可访问该寄存器，设置新的比较值，控制占空比
-//以宏封装后，使用这种形式：COLOR_TIMx->COLOR_RED_CCRx ，可访问该通道的比较寄存器
-#define  COLOR_RED_CCRx                       	CCR1		
+// 通道比较寄存器，以TIMx->CCRx方式可访问该寄存器，设置新的比较值，控制占空比
+// 以宏封装后，使用这种形式：COLOR_TIMx->COLOR_RED_CCRx ，可访问该通道的比较寄存器
+// 输入捕获模式：当外部信号通过TIMx_CH1通道（或互补通道）触发时，定时器当前计数值（TIMx_CNT）会被自动锁存到CCR1中
+// 输出比较模式：定时器将CCR1的值与计数器（TIMx_CNT）实时比较，当两者匹配时，自动改变通道输出电平（如翻转、置高/置低），或触发中断/DMA请求
+#define  COLOR_RED_CCRx                       	    CCR1		
 
 /************绿灯***************/
-#define COLOR_GREEN_PIN                  GPIO_Pin_11                 
-#define COLOR_GREEN_GPIO_PORT            GPIOH                      
+#define COLOR_GREEN_PIN                             GPIO_Pin_11                 
+#define COLOR_GREEN_GPIO_PORT                       GPIOH                      
 #define COLOR_GREEN_PINSOURCE						GPIO_PinSource11
-#define COLOR_GREEN_AF										GPIO_AF_TIM5
+#define COLOR_GREEN_AF								GPIO_AF_TIM5
 
-#define  COLOR_GREEN_TIM_OCxInit                TIM_OC2Init            //通道初始化函数
-#define  COLOR_GREEN_TIM_OCxPreloadConfig       TIM_OC2PreloadConfig //通道重载配置函数
+#define COLOR_GREEN_TIM_OCxInit                     TIM_OC2Init            //通道初始化函数
+#define COLOR_GREEN_TIM_OCxPreloadConfig            TIM_OC2PreloadConfig //通道重载配置函数
 
 //通道比较寄存器，以TIMx->CCRx方式可访问该寄存器，设置新的比较值，控制占空比
 //以宏封装后，使用这种形式：COLOR_TIMx->COLOR_GREEN_CCRx ，可访问该通道的比较寄存器
-#define  COLOR_GREEN_CCRx                       CCR2
+#define  COLOR_GREEN_CCRx                           CCR2
 
 /************蓝灯***************/
-#define COLOR_BLUE_PIN                  GPIO_Pin_12                 
-#define COLOR_BLUE_GPIO_PORT            GPIOH                       
+#define COLOR_BLUE_PIN                              GPIO_Pin_12                 
+#define COLOR_BLUE_GPIO_PORT                        GPIOH                       
 #define COLOR_BLUE_PINSOURCE						GPIO_PinSource12
-#define COLOR_BLUE_AF										GPIO_AF_TIM5
+#define COLOR_BLUE_AF								GPIO_AF_TIM5
 
-#define   COLOR_BLUE_TIM_OCxInit              TIM_OC3Init            //通道初始化函数
-#define   COLOR_BLUE_TIM_OCxPreloadConfig    TIM_OC3PreloadConfig  //通道重载配置函数
+#define COLOR_BLUE_TIM_OCxInit                      TIM_OC3Init            //通道初始化函数
+#define COLOR_BLUE_TIM_OCxPreloadConfig             TIM_OC3PreloadConfig  //通道重载配置函数
 
 //通道比较寄存器，以TIMx->CCRx方式可访问该寄存器，设置新的比较值，控制占空比
 //以宏封装后，使用这种形式：COLOR_TIMx->COLOR_BLUE_CCRx ，可访问该通道的比较寄存器
-#define   COLOR_BLUE_CCRx                      CCR3
+#define   COLOR_BLUE_CCRx                           CCR3
 
 
 /************************************************************/

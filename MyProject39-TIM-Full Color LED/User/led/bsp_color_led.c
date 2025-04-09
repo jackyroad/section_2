@@ -1,19 +1,10 @@
 /**
-  ******************************************************************************
-  * @file    bsp_breath_led.c
-  * @author  STMicroelectronics
-  * @version V1.0
-  * @date    2015-xx-xx
-  * @brief   全彩LED灯驱动
-  ******************************************************************************
-  * @attention
-  *
-  * 实验平台:野火  STM32 F429 开发板  
-  * 论坛    :http://www.firebbs.cn
-  * 淘宝    :https://fire-stm32.taobao.com
-  *
-  ******************************************************************************
-  */
+ * @file   bsp_color_led.c
+ * @brief  定时器和LED设置
+ * @author leshen (13762713527@qq.com)
+ * @date 2025-04-09
+ * @copyright Copyright (c) 2025
+ */
   
 #include "./led/bsp_color_led.h"
 
@@ -49,10 +40,8 @@ static void TIMx_GPIO_Config(void)
     
     /*COLOR_LED3*/															   
 		GPIO_InitStructure.GPIO_Pin = COLOR_BLUE_PIN;	
-    GPIO_Init(COLOR_BLUE_GPIO_PORT, &GPIO_InitStructure);	
-		
+    GPIO_Init(COLOR_BLUE_GPIO_PORT, &GPIO_InitStructure);		
 }
-
 
 
 /**
@@ -86,13 +75,23 @@ static void TIM_Mode_Config(void)
 	TIM_TimeBaseInit(COLOR_TIM, &TIM_TimeBaseStructure);	
 	
 	
-	/*PWM模式配置*/
+	/*PWM模式配置，TIM5只需要配置这4个，其他的内容属于高级定时器 */
 	/* PWM1 Mode configuration: Channel1 */
-  TIM_OCInitStructure.TIM_OCMode = TIM_OCMode_PWM1;	    				//配置为PWM模式1
+  /*                宏定义            值    模式说明
+              TIM_OCMode_Timing    0x0000  定时模式  （不改变输出引脚电平，仅触发中断 /DMA）
+              TIM_OCMode_Active    0x0010  强制高电平（匹配时输出高电平）
+              TIM_OCMode_Inactive  0x0020  强制低电平（匹配时输出低电平）
+              TIM_OCMode_Toggle    0x0030  翻转模式  （匹配时翻转输出电平）
+              TIM_OCMode_PWM1      0x0060  PWM 模式 1（CNT <CCRx 时有效电平，CNT ≥ CCRx 时无效电平）
+              TIM_OCMode_PWM2      0x0070  PWM 模式 2（CNT < CCRx 时无效电平，CNT ≥ CCRx 时有效电平）
+  */
+  TIM_OCInitStructure.TIM_OCMode = TIM_OCMode_PWM1;             // 配置为PWM模式1
   TIM_OCInitStructure.TIM_OutputState = TIM_OutputState_Enable;	//使能输出
-  TIM_OCInitStructure.TIM_Pulse = 0;	  														//设置初始PWM脉冲宽度为0	
+  TIM_OCInitStructure.TIM_Pulse = 0;	  												//设置初始PWM脉冲宽度为0	
   TIM_OCInitStructure.TIM_OCPolarity = TIM_OCPolarity_Low;  	  //当定时器计数值小于CCR_Val时为低电平 LED灯亮
- 
+  
+  /* TIM5定时器的三个输出通道CH1,CH2,CH3分别对应R-LED,G-LED,B-LED，
+  就是说对应三个GPIO根据配置的RCC寄存器里面的值输出对应的PWM信号 */
   //使能通道  
   COLOR_RED_TIM_OCxInit(COLOR_TIM, &TIM_OCInitStructure);	 							
 	/*使能通道重载*/
@@ -112,14 +111,12 @@ static void TIM_Mode_Config(void)
 	
 	// 使能计数器
 	TIM_Cmd(COLOR_TIM, ENABLE);																		
-
-
 }
 
 
  /**
   * @brief  设置RGB LED的颜色
-	* @param  rgb:要设置LED显示的颜色值格式RGB888
+	* @param  rgb:要设置LED显示的颜色值格式RGB888(实际上只用到了24位，有意义的范围为[0,2^24-1])
   * @retval 无
   */
 void SetRGBColor(uint32_t rgb)
@@ -127,14 +124,16 @@ void SetRGBColor(uint32_t rgb)
 	//根据颜色值修改定时器的比较寄存器值
 	COLOR_TIM->COLOR_RED_CCRx = (uint8_t)(rgb>>16);			//R
 	COLOR_TIM->COLOR_GREEN_CCRx = (uint8_t)(rgb>>8);	  //G     
-	COLOR_TIM->COLOR_BLUE_CCRx = (uint8_t)rgb;						//B
+	COLOR_TIM->COLOR_BLUE_CCRx = (uint8_t)rgb;				  //B
 }
 
- /**
-  * @brief  设置RGB LED的颜色
-	* @param  r\g\b:要设置LED显示的颜色值
-  * @retval 无
-  */
+
+/**
+ * @brief  设置RGB LED的颜色
+ * @param  rgb:要设置LED显示的颜色值[0:255]
+ * @retval None
+ * @note   这个函数的功能与上面函数SetRGBColor一致，不过输入参数不一样
+ */
 void SetColorValue(uint8_t r,uint8_t g,uint8_t b)
 {
 	//根据颜色值修改定时器的比较寄存器值
@@ -151,14 +150,12 @@ void SetColorValue(uint8_t r,uint8_t g,uint8_t b)
   */
 void ColorLED_Config(void)
 {
-
 	TIMx_GPIO_Config();
 	
 	TIM_Mode_Config();
 	
 	//上电后默认显示
 	SetColorValue(0xff,0xff,0xff);
-
 }
 
 /*********************************************END OF FILE**********************/

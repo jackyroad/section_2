@@ -1,35 +1,25 @@
 /**
-  ******************************************************************************
-  * @file    main.c
-  * @author  fire
-  * @version V1.0
-  * @date    2015-xx-xx
-  * @brief   全彩LED灯例程
-  ******************************************************************************
-  * @attention
-  *
-  * 实验平台:野火  STM32 F429 开发板
-  * 论坛    :http://www.firebbs.cn
-  * 淘宝    :https://fire-stm32.taobao.com
-  *
-  ******************************************************************************
-  */
+ * @file   main.c
+ * @brief  定时器PWM输出制作全彩LED灯
+ * @author leshen (13762713527@qq.com)
+ * @version{master} (commit:{gitCommitShort})
+ * @date 2025-04-09
+ * @copyright Copyright (c) 2025
+ */
   
 #include "stm32f4xx.h"
 #include "./led/bsp_color_led.h"
 #include "./usart/bsp_debug_usart.h"
 
-static void Delay(__IO u32 nCount); 
-
+static void Delay(__IO uint32_t nCount);
 
 /**
-  * @brief  主函数
-  * @param  无
-  * @retval 无
-  */
-int main(void) 
+ * @brief  主函数
+ * @param  None
+ * @retval None
+ */
+int main(void)
 {
-
 	uint32_t random_color = 0;
 
   /* 初始化呼吸灯 */
@@ -39,20 +29,17 @@ int main(void)
   Debug_USART_Config();
 	
 	/* 使能RNG时钟 */
+  /* RNG是一个硬件随机数生成器,用于生成真随机数 */
   RCC_AHB2PeriphClockCmd(RCC_AHB2Periph_RNG, ENABLE);	
 	/* 使能RNG外设 */
   RNG_Cmd(ENABLE);
 
- 
 	printf("\r\n 欢迎使用野火  STM32 F429 开发板。\r\n");		
 	printf("\r\n 全彩LED灯例程\r\n");	  
   printf("\r\n 使用PWM控制RGB灯，可控制输出各种颜色\r\n ");
 
-  
-  
   while(1)
   {
-		
 		SetRGBColor(COLOR_YELLOW); 
 		Delay(0xFFFFFF); 
 		
@@ -65,9 +52,7 @@ int main(void)
 		/*显示随机颜色*/
 		SetRGBColor(random_color&0xFFFFFF); 
 		Delay(0x2FFFFFF); 
-
   }
-
 }
 
 
