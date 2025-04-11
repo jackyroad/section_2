@@ -40,8 +40,8 @@ int main(void)
 
   while(1)
   {
-		SetRGBColor(COLOR_YELLOW); 
-		Delay(0xFFFFFF); 
+		//SetRGBColor(COLOR_YELLOW); 
+		//Delay(0xFFFFF); 
 		
 		/* 等待随机数产生完毕 */
 		while(RNG_GetFlagStatus(RNG_FLAG_DRDY)== RESET);
@@ -51,7 +51,7 @@ int main(void)
 		printf("\r\n 随机颜色值：0x%06x",random_color&0xFFFFFF);
 		/*显示随机颜色*/
 		SetRGBColor(random_color&0xFFFFFF); 
-		Delay(0x2FFFFFF); 
+		Delay(0x4FFFFF); 
   }
 }
 

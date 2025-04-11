@@ -3,7 +3,7 @@
 <title>Static Call Graph - [..\..\Output\SD-WR.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image ..\..\Output\SD-WR.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Tue Apr 08 15:15:57 2025
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Fri Apr 11 14:45:45 2025
 <BR><P>
 <H3>Maximum Stack Usage =        136 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -862,14 +862,14 @@ Global Symbols
 <P><STRONG><a name="[ad]"></a>SD_MultiBlockTest</STRONG> (Thumb, 194 bytes, Stack size 16 bytes, sdio_test.o(i.SD_MultiBlockTest))
 <BR><BR>[Stack]<UL><LI>Max Depth = 128<LI>Call Chain = SD_MultiBlockTest &rArr; SD_WriteMultiBlocks &rArr; SD_LowLevel_DMA_TxConfig &rArr; DMA_Init
 </UL>
-<BR>[Calls]<UL><LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Fill_Buffer
+<BR>[Calls]<UL><LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
+<LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Fill_Buffer
 <LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Buffercmp
 <LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_WriteMultiBlocks
 <LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_WaitWriteOperation
 <LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_WaitReadOperation
 <LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_ReadMultiBlocks
 <LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_GetStatus
-<LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
 </UL>
 <BR>[Called By]<UL><LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_Test
 </UL>
@@ -969,11 +969,11 @@ Global Symbols
 <P><STRONG><a name="[bc]"></a>SD_Test</STRONG> (Thumb, 138 bytes, Stack size 8 bytes, sdio_test.o(i.SD_Test))
 <BR><BR>[Stack]<UL><LI>Max Depth = 136<LI>Call Chain = SD_Test &rArr; SD_MultiBlockTest &rArr; SD_WriteMultiBlocks &rArr; SD_LowLevel_DMA_TxConfig &rArr; DMA_Init
 </UL>
-<BR>[Calls]<UL><LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_MultiBlockTest
+<BR>[Calls]<UL><LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
+<LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_MultiBlockTest
 <LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_SingleBlockTest
 <LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_EraseTest
 <LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_Init
-<LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
 </UL>
 <BR>[Called By]<UL><LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
@@ -1033,7 +1033,7 @@ Global Symbols
 <P><STRONG><a name="[9]"></a>SysTick_Handler</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, stm32f4xx_it.o(i.SysTick_Handler))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f429_439xx.o(RESET)
 </UL>
-<P><STRONG><a name="[66]"></a>SystemInit</STRONG> (Thumb, 74 bytes, Stack size 8 bytes, system_stm32f4xx.o(i.SystemInit))
+<P><STRONG><a name="[66]"></a>SystemInit</STRONG> (Thumb, 88 bytes, Stack size 8 bytes, system_stm32f4xx.o(i.SystemInit))
 <BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = SystemInit &rArr; SetSysClock
 </UL>
 <BR>[Calls]<UL><LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetSysClock
@@ -1094,13 +1094,13 @@ Global Symbols
 <P><STRONG><a name="[65]"></a>main</STRONG> (Thumb, 96 bytes, Stack size 0 bytes, main.o(i.main))
 <BR><BR>[Stack]<UL><LI>Max Depth = 136<LI>Call Chain = main &rArr; SD_Test &rArr; SD_MultiBlockTest &rArr; SD_WriteMultiBlocks &rArr; SD_LowLevel_DMA_TxConfig &rArr; DMA_Init
 </UL>
-<BR>[Calls]<UL><LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_Test
+<BR>[Calls]<UL><LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
+<LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_Test
 <LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_GPIO_Config
 <LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Key_Scan
 <LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Key_GPIO_Config
 <LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Debug_USART_Config
 <LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BL8782_PDN_INIT
-<LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> entry9a.o(.ARM.Collect$$$$0000000B)
 </UL><P>
@@ -1238,12 +1238,12 @@ Local Symbols
 <P><STRONG><a name="[93]"></a>SD_EraseTest</STRONG> (Thumb, 160 bytes, Stack size 16 bytes, sdio_test.o(i.SD_EraseTest))
 <BR><BR>[Stack]<UL><LI>Max Depth = 128<LI>Call Chain = SD_EraseTest &rArr; SD_ReadMultiBlocks &rArr; SD_LowLevel_DMA_RxConfig &rArr; DMA_Init
 </UL>
-<BR>[Calls]<UL><LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;eBuffercmp
+<BR>[Calls]<UL><LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
+<LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;eBuffercmp
 <LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_WaitReadOperation
 <LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_ReadMultiBlocks
 <LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_GetStatus
 <LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_Erase
-<LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
 </UL>
 <BR>[Called By]<UL><LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_Test
 </UL>
@@ -1251,14 +1251,14 @@ Local Symbols
 <P><STRONG><a name="[b9]"></a>SD_SingleBlockTest</STRONG> (Thumb, 188 bytes, Stack size 8 bytes, sdio_test.o(i.SD_SingleBlockTest))
 <BR><BR>[Stack]<UL><LI>Max Depth = 112<LI>Call Chain = SD_SingleBlockTest &rArr; SD_WriteBlock &rArr; SD_LowLevel_DMA_TxConfig &rArr; DMA_Init
 </UL>
-<BR>[Calls]<UL><LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Fill_Buffer
+<BR>[Calls]<UL><LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
+<LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Fill_Buffer
 <LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Buffercmp
 <LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_WriteBlock
 <LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_WaitWriteOperation
 <LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_WaitReadOperation
 <LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_ReadBlock
 <LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_GetStatus
-<LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
 </UL>
 <BR>[Called By]<UL><LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_Test
 </UL>

@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "sdio_test.h": "c",
+        "bsp_sdio_sd.h": "c"
+    }
+}

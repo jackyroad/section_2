@@ -3,7 +3,7 @@
 <title>Static Call Graph - [..\..\Output\COLOR_LED.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image ..\..\Output\COLOR_LED.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Wed Apr 09 16:32:21 2025
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Thu Apr 10 00:04:03 2025
 <BR><P>
 <H3>Maximum Stack Usage =        100 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -622,13 +622,13 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[90]"></a>RNG_GetRandomNumber</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, stm32f4xx_rng.o(.text))
+<P><STRONG><a name="[8e]"></a>RNG_GetRandomNumber</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, stm32f4xx_rng.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
 <P><STRONG><a name="[ec]"></a>RNG_ITConfig</STRONG> (Thumb, 30 bytes, Stack size 0 bytes, stm32f4xx_rng.o(.text), UNUSED)
 
-<P><STRONG><a name="[8f]"></a>RNG_GetFlagStatus</STRONG> (Thumb, 22 bytes, Stack size 0 bytes, stm32f4xx_rng.o(.text))
+<P><STRONG><a name="[8d]"></a>RNG_GetFlagStatus</STRONG> (Thumb, 22 bytes, Stack size 0 bytes, stm32f4xx_rng.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
@@ -957,17 +957,17 @@ Global Symbols
 
 <P><STRONG><a name="[148]"></a>USART_ClearITPendingBit</STRONG> (Thumb, 30 bytes, Stack size 8 bytes, stm32f4xx_usart.o(.text), UNUSED)
 
-<P><STRONG><a name="[65]"></a>main</STRONG> (Thumb, 104 bytes, Stack size 0 bytes, main.o(.text))
+<P><STRONG><a name="[65]"></a>main</STRONG> (Thumb, 88 bytes, Stack size 0 bytes, main.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 100<LI>Call Chain = main &rArr; Debug_USART_Config &rArr; USART_Init &rArr; RCC_GetClocksFreq
 </UL>
-<BR>[Calls]<UL><LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RNG_GetFlagStatus
-<LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RNG_GetRandomNumber
+<BR>[Calls]<UL><LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RNG_GetFlagStatus
+<LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RNG_GetRandomNumber
 <LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RNG_Cmd
 <LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_AHB2PeriphClockCmd
-<LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetRGBColor
+<LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetRGBColor
 <LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Debug_USART_Config
 <LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ColorLED_Config
-<LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delay
+<LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delay
 <LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> entry9a.o(.ARM.Collect$$$$0000000B)
@@ -1025,7 +1025,7 @@ Global Symbols
 <LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_ReceiveData
 </UL>
 
-<P><STRONG><a name="[8d]"></a>SetRGBColor</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, bsp_color_led.o(.text))
+<P><STRONG><a name="[8f]"></a>SetRGBColor</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, bsp_color_led.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
@@ -1117,7 +1117,7 @@ Local Symbols
 <LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_ICInit
 </UL>
 
-<P><STRONG><a name="[8e]"></a>Delay</STRONG> (Thumb, 18 bytes, Stack size 8 bytes, main.o(.text))
+<P><STRONG><a name="[90]"></a>Delay</STRONG> (Thumb, 18 bytes, Stack size 8 bytes, main.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = Delay
 </UL>
 <BR>[Called By]<UL><LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
