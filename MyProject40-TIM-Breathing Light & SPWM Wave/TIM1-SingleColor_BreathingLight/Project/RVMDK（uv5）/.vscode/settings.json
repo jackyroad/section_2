@@ -1,7 +1,0 @@
-{
-    "files.associations": {
-        "bsp_debug_usart.h": "c",
-        "bsp_breath_led.h": "c",
-        "stm32f4xx_it.h": "c"
-    }
-}

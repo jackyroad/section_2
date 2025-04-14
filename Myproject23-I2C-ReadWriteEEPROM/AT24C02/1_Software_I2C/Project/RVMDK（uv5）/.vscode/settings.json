@@ -1,0 +1,6 @@
+{
+  "git.ignoreLimitWarning": true,
+  "files.associations": {
+    "bsp_i2c_gpio.h": "c"
+  }
+}
