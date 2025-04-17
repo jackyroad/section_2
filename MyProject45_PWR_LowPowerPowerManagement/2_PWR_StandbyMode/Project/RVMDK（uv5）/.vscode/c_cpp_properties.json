@@ -7,6 +7,9 @@
                 "f:\\Generated_Files\\section_2\\MyProject45_PWR_LowPowerPowerManagement\\2_PWR_StandbyMode\\Libraries\\STM32F4xx_StdPeriph_Driver\\inc",
                 "f:\\Generated_Files\\section_2\\MyProject45_PWR_LowPowerPowerManagement\\2_PWR_StandbyMode\\User",
                 "f:\\Generated_Files\\section_2\\MyProject45_PWR_LowPowerPowerManagement\\2_PWR_StandbyMode\\Libraries\\CMSIS\\Include",
+                "f:\\Generated_Files\\section_2\\MyProject45_PWR_LowPowerPowerManagement\\2_PWR_StandbyMode\\User\\key",
+                "f:\\Generated_Files\\section_2\\MyProject45_PWR_LowPowerPowerManagement\\2_PWR_StandbyMode\\User\\led",
+                "f:\\Generated_Files\\section_2\\MyProject45_PWR_LowPowerPowerManagement\\2_PWR_StandbyMode\\User\\usart",
                 "D:\\software\\Keil_v5\\ARM\\ARMCLANG\\include",
                 "D:\\software\\Keil_v5\\ARM\\ARMCLANG\\include\\arm_linux",
                 "D:\\software\\Keil_v5\\ARM\\ARMCLANG\\include\\arm_linux_compat",
@@ -14,9 +17,6 @@
                 "f:\\Generated_Files\\section_2\\MyProject45_PWR_LowPowerPowerManagement\\2_PWR_StandbyMode\\Libraries\\CMSIS\\Device\\ST\\STM32F4xx\\Source\\Templates\\arm",
                 "f:\\Generated_Files\\section_2\\MyProject45_PWR_LowPowerPowerManagement\\2_PWR_StandbyMode\\Libraries\\CMSIS\\Device\\ST\\STM32F4xx\\Source\\Templates",
                 "f:\\Generated_Files\\section_2\\MyProject45_PWR_LowPowerPowerManagement\\2_PWR_StandbyMode\\Libraries\\STM32F4xx_StdPeriph_Driver\\src",
-                "f:\\Generated_Files\\section_2\\MyProject45_PWR_LowPowerPowerManagement\\2_PWR_StandbyMode\\User\\usart",
-                "f:\\Generated_Files\\section_2\\MyProject45_PWR_LowPowerPowerManagement\\2_PWR_StandbyMode\\User\\led",
-                "f:\\Generated_Files\\section_2\\MyProject45_PWR_LowPowerPowerManagement\\2_PWR_StandbyMode\\User\\key",
                 "f:\\Generated_Files\\section_2\\MyProject45_PWR_LowPowerPowerManagement\\2_PWR_StandbyMode"
             ],
             "defines": [

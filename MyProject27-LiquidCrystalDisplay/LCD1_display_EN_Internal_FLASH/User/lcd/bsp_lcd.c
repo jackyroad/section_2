@@ -153,7 +153,7 @@ void LCD_Init(void)
   /* 使能LTDC外设时钟 */
   RCC_APB2PeriphClockCmd(RCC_APB2Periph_LTDC, ENABLE);
 
-  /* 使能DMA2D时钟 */
+  /* 使能DMA2D时钟，驱动数据从存储器存储到FIFO */
   RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_DMA2D, ENABLE);
 
   /* 初始化LCD的控制引脚 */
@@ -168,7 +168,7 @@ void LCD_Init(void)
   /* PLLLCDCLK = PLLSAI_VCO 输出/PLLSAI_R = 420/6  Mhz */
   /* LTDC 时钟频率 = PLLLCDCLK / DIV = 420/6/8 = 8.75 Mhz */
   /* LTDC时钟太高会导花屏，若对刷屏速度要求不高，降低时钟频率可减少花屏现象*/
-  /* 以下函数三个参数分别为：PLLSAIN,PLLSAIQ,PLLSAIR，其中PLLSAIQ与LTDC无关*/
+  /* 以下函数三个参数分别为：PLLSAIN,PLLSAIQ,PLLSAIR，其中PLLSAIQ与LTDC无关，这个参数数PLLSAICLK的分频因子 */
   RCC_PLLSAIConfig(420, 7, 6);
   /*以下函数的参数为DIV值*/
   RCC_LTDCCLKDivConfig(RCC_PLLSAIDivR_Div8);
@@ -211,7 +211,7 @@ void LCD_Init(void)
   /* 配置垂直同步信号宽度(VSW-1) */
   /* 必须等待VSW结束后，才会进入HBP和有效数据传输阶段*/
   LTDC_InitStruct.LTDC_VerticalSync = VSW - 1;
-  
+
   /* 配置(HSW+HBP-1) */
   LTDC_InitStruct.LTDC_AccumulatedHBP = HSW + HBP - 1;
   /* 配置(VSW+VBP-1) */
@@ -254,16 +254,21 @@ void LCD_LayerInit(void)
 
   /* 像素格式配置*/
   LTDC_Layer_InitStruct.LTDC_PixelFormat = LTDC_Pixelformat_RGB888;
+
   /* 恒定Alpha值配置，0-255 */
   LTDC_Layer_InitStruct.LTDC_ConstantAlpha = 255;
+
   /* 默认背景颜色，该颜色在定义的层窗口外或在层禁止时使用。 */
+  /* 配置的值：RGB(0xFF, 0xFF, 0xFF)（白色）。这意味着如果该图层被禁用或像素在图层窗口外，会显示白色。*/
   LTDC_Layer_InitStruct.LTDC_DefaultColorBlue = 0xFF;
   LTDC_Layer_InitStruct.LTDC_DefaultColorGreen = 0xFF;
   LTDC_Layer_InitStruct.LTDC_DefaultColorRed = 0xFF;
+  /* 0为透明，0xFF为不透明。 */
   LTDC_Layer_InitStruct.LTDC_DefaultColorAlpha = 0xFF;
+
   /* 配置混合因子 CA表示使用恒定Alpha值，PAxCA表示使用像素Alpha x 恒定Alpha值 */
   LTDC_Layer_InitStruct.LTDC_BlendingFactor_1 = LTDC_BlendingFactor1_CA;
-  LTDC_Layer_InitStruct.LTDC_BlendingFactor_2 = LTDC_BlendingFactor2_PAxCA;
+  LTDC_Layer_InitStruct.LTDC_BlendingFactor_2 = LTDC_BlendingFactor2_CA;
 
   /* 该成员应写入(一行像素数据占用的字节数+3)
   Line Lenth = 行有效像素个数 x 每个像素的字节数 + 3
@@ -281,14 +286,16 @@ void LCD_LayerInit(void)
   /* 配置本层的显存首地址 */
   LTDC_Layer_InitStruct.LTDC_CFBStartAdress = LCD_FRAME_BUFFER;
 
-  /* 以上面的配置初始化第 1 层*/
+  /* 以上面的配置初始化第1层，第一层是中间的层，先与底层混合 */
   LTDC_LayerInit(LTDC_Layer1, &LTDC_Layer_InitStruct);
 
   /*配置第 2 层，若没有重写某个成员的值，则该成员使用跟第1层一样的配置 */
   /* 配置本层的显存首地址，这里配置它紧挨在第1层的后面*/
+  /* 每一层都有800*480*3个字节的数据存放在显存(RGB888格式) */
   LTDC_Layer_InitStruct.LTDC_CFBStartAdress = LCD_FRAME_BUFFER + BUFFER_OFFSET;
 
-  /* 配置混合因子，使用像素Alpha参与混合 */
+  /* 配置混合因子，使用像素Alpha参与混合，
+  Output Color=Factor1×Layer Color+Factor2×Background Color */
   LTDC_Layer_InitStruct.LTDC_BlendingFactor_1 = LTDC_BlendingFactor1_PAxCA;
   LTDC_Layer_InitStruct.LTDC_BlendingFactor_2 = LTDC_BlendingFactor2_PAxCA;
 
@@ -451,12 +458,14 @@ void LCD_Clear(uint32_t Color)
 
   /* Configure DMA2D */
   DMA2D_DeInit();
+  /* 从DMA内部寄存器加载到显存(SDRAM) */
   DMA2D_InitStruct.DMA2D_Mode = DMA2D_R2M;
   DMA2D_InitStruct.DMA2D_CMode = DMA2D_RGB888;
   DMA2D_InitStruct.DMA2D_OutputRed = Red_Value;     // Red_Value;
   DMA2D_InitStruct.DMA2D_OutputGreen = Green_Value; // Green_Value;
   DMA2D_InitStruct.DMA2D_OutputBlue = Blue_Value;   // Blue_Value;
 
+  /* 0x00 到 0xFF（即 0~255），从完全透明到完全不透明 */
   DMA2D_InitStruct.DMA2D_OutputAlpha = 0x0F;
   DMA2D_InitStruct.DMA2D_OutputMemoryAdd = CurrentFrameBuffer;
 
@@ -745,7 +754,6 @@ void LCD_DrawCircle(uint16_t Xpos, uint16_t Ypos, uint16_t Radius)
   int x = -Radius, y = 0, err = 2 - 2 * Radius, e2;
   do
   {
-
     *(__IO uint16_t *)(CurrentFrameBuffer + (3 * ((Xpos - x) + LCD_PIXEL_WIDTH * (Ypos + y)))) = (0x00FFFF & CurrentTextColor);          // GB
     *(__IO uint8_t *)(CurrentFrameBuffer + (3 * ((Xpos - x) + LCD_PIXEL_WIDTH * (Ypos + y)) + 2)) = (0xFF0000 & CurrentTextColor) >> 16; // R
 

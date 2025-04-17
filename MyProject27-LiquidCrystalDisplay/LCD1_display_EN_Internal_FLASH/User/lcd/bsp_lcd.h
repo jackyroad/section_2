@@ -243,6 +243,7 @@ extern const LCD_PARAM_TypeDef lcd_param[];
 #define LTDC_R3_GPIO_CLK         	RCC_AHB1Periph_GPIOB
 #define LTDC_R3_GPIO_PIN         	GPIO_Pin_0
 #define LTDC_R3_PINSOURCE        	GPIO_PinSource0
+/* 注意这里GPIO引脚的复用是AF9，AF默认复用AF14 */
 #define LTDC_R3_AF			          GPIO_AF_LTDC_AF9
 
 #define LTDC_R4_GPIO_PORT        	GPIOA

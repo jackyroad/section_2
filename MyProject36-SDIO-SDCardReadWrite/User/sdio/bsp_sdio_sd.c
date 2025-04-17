@@ -636,8 +636,8 @@ SD_Error SD_Init(void)
 	NVIC_InitStructure.NVIC_IRQChannel = SD_SDIO_DMA_IRQn;
 	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 1;
 	NVIC_Init (&NVIC_InitStructure);
-	/**********************************************************/
-	
+	/********************************************************/
+	 
   /* SDIO Peripheral Low Level Init */
   SD_LowLevel_Init();
 
@@ -662,7 +662,7 @@ SD_Error SD_Init(void)
   /*!< Configure the SDIO peripheral */
   /*!< SDIO_CK = SDIOCLK / (SDIO_TRANSFER_CLK_DIV + 2) */
   /*!< on STM32F4xx devices, SDIOCLK is fixed to 48MHz */
-  SDIO_InitStructure.SDIO_ClockDiv = SDIO_TRANSFER_CLK_DIV;
+  SDIO_InitStructure.SDIO_ClockDiv = SDIO_TRANSFER_CLK_DIV;     // 配置sd卡时钟频率为24MHZ
   SDIO_InitStructure.SDIO_ClockEdge = SDIO_ClockEdge_Rising;
   SDIO_InitStructure.SDIO_ClockBypass = SDIO_ClockBypass_Disable;
   SDIO_InitStructure.SDIO_ClockPowerSave = SDIO_ClockPowerSave_Disable;
@@ -816,6 +816,7 @@ SD_Error SD_PowerON(void)
 
   errorstatus = CmdResp7Error();
 
+  /* sd卡为sdhc类型 */
   if (errorstatus == SD_OK)
   {
     CardType = SDIO_STD_CAPACITY_SD_CARD_V2_0; /*!< SD Card 2.0 */
@@ -824,6 +825,7 @@ SD_Error SD_PowerON(void)
   else
   {
     /*!< CMD55 */
+    /* 指定下一句命令为特定命令，本身不是标准命令 */
     SDIO_CmdInitStructure.SDIO_Argument = 0x00;
     SDIO_CmdInitStructure.SDIO_CmdIndex = SD_CMD_APP_CMD;
     SDIO_CmdInitStructure.SDIO_Response = SDIO_Response_Short;
@@ -848,6 +850,7 @@ SD_Error SD_PowerON(void)
   {
     /*!< SD CARD */
     /*!< Send ACMD41 SD_APP_OP_COND with Argument 0x80100000 */
+    /* 41命令：主机要求卡发送支持信息和OCR寄存器的值 */
     while ((!validvoltage) && (count < SD_MAX_VOLT_TRIAL))
     {
 

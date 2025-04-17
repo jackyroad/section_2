@@ -5,16 +5,16 @@
 <h2>Tool Versions:</h2>
 IDE-Version: ��Vision V5.41.0.0
 Copyright (C) 2024 ARM Ltd and ARM Germany GmbH. All rights reserved.
-License Information:  ,  , LIC=----
+License Information:  ,  , LIC=9WSKC-71JM2-01EP1-CU23E-K7DGB-R1REM
  
 Tool Versions:
-Toolchain:       MDK-Lite  Version: 5.41.0.0
-Toolchain Path:  D:\software\Keil_v5\ARM\ARMCC\Bin
-C Compiler:      Armcc.exe V5.06 update 7 (build 960)
-Assembler:       Armasm.exe V5.06 update 7 (build 960)
-Linker/Locator:  ArmLink.exe V5.06 update 7 (build 960)
-Library Manager: ArmAr.exe V5.06 update 7 (build 960)
-Hex Converter:   FromElf.exe V5.06 update 7 (build 960)
+Toolchain:       MDK-ARM Plus  Version: 5.41.0.0
+Toolchain Path:  D:\software\Keil_v5\ARM\ARMCLANG\Bin
+C Compiler:      ArmClang.exe V6.22
+Assembler:       Armasm.exe V6.22
+Linker/Locator:  ArmLink.exe V6.22
+Library Manager: ArmAr.exe V6.22
+Hex Converter:   FromElf.exe V6.22
 CPU DLL:         SARMCM3.DLL V5.41.0.0
 Dialog DLL:      DCM.DLL V1.17.5.0
 Target DLL:      CMSIS_AGDI.dll V1.33.21.0
@@ -22,12 +22,32 @@ Dialog DLL:      TCM.DLL V1.56.4.0
  
 <h2>Project:</h2>
 f:\Generated_Files\section_2\MyProject27-LiquidCrystalDisplay\LCD1_display_EN_Internal_FLASH\Project\RVMDK��uv5��\BF-F429.uvprojx
-Project File Date:  04/02/2025
+Project File Date:  04/16/2025
 
 <h2>Output:</h2>
-*** Using Compiler 'V5.06 update 7 (build 960)', folder: 'D:\software\Keil_v5\ARM\ARMCC\Bin'
+*** Using Compiler 'V6.22', folder: 'D:\software\Keil_v5\ARM\ARMCLANG\Bin'
 Build target 'LCD'
-"..\..\Output\LCD.axf" - 0 Error(s), 0 Warning(s).
+compiling bsp_led.c...
+compiling bsp_touch_gtxx.c...
+../../User/main.c(43): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
+   43 |   printf("\r\n<CC><E1>ʾ<A3><BA>\r\n"
+      |               ^~~~~~~~ ~~~~~~~~
+../../User/main.c(44): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
+   44 |          "<C8><E7><B9><FB><CA><C7>4.3<B4><E7>/5<B4><E7><B5><C4>RGB<C6><C1>Ļ<A3><AC>ʹ<D3>õĴ<A5><C3><FE>оƬ<BF><C9><C4><DC><CA><C7>GT1151QM<A1><A3>\r\n"
+      |           ^~~~~~~~~~~~~~~~~~~~~~~~   ~~~~~~~~  ~~~~~~~~~~~~~~~~   ~~~~~~~~ ~~~~~~~~ ~~~~  ~~~~~~~~~~~~  ~~~~~~~~~~~~~~~~~~~~~~~~        ~~~~~~~~
+../../User/main.c(45): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
+   45 |          "<C8><E7><B9><FB><B4><A5><C3><FE><BB><F2><CF><D4>ʾ<D2>쳣<A3><AC><C7><EB>ȷ<C8><CF>ʹ<D3>õ<C4><C6><C1>Ļ<B4><A5><C3><FE>оƬ<D0>ͺţ<AC>"
+      |           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ~~~~  ~~~~~~~~~~~~~~~~ ~~~~~~~~ ~~~~ ~~~~~~~~~~~~ ~~~~~~~~~~~~~~~~  ~~~~  ~~~~
+../../User/main.c(46): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
+   46 |          "<D4>ڡ<B0>bsp_i2c_touch.h<A1><B1><CE>ļ<FE><D0><U+07B8>ĺ궨<D2><E5> LCD_TOUCH_IC_GT1151QM<A1><A3>\r\n\r\n");
+      |           ^~~~ ~~~~               ~~~~~~~~~~~~ ~~~~~~~~           ~~~~~~~~                      ~~~~~~~~
+4 warnings generated.
+compiling main.c...
+compiling bsp_lcd.c...
+linking...
+Program Size: Code=11880 RO-data=5676 RW-data=20 ZI-data=1052  
+FromELF: creating hex file...
+"..\..\Output\LCD.axf" - 0 Error(s), 4 Warning(s).
 
 <h2>Software Packages used:</h2>
 
